@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Crypto Trading Web App</title>
+    <title>Star-Trading Pro</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         :root {
-            --bg-color: #121619;
+            --bg-color: #0b0e11;
             --card-bg: #1e2329;
             --text-color: #eaecef;
             --text-secondary: #848e9c;
@@ -16,109 +16,109 @@
             --accent: #f0b90b;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-color); padding: 12px; }
+        body { background-color: var(--bg-color); color: var(--text-color); padding: 10px; padding-bottom: 40px; }
         
         /* Balans qismi */
         .wallet-card {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 16px;
+            padding: 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
-        .balance-title { font-size: 13px; color: var(--text-secondary); }
-        .balance-amount { font-size: 20px; font-weight: bold; margin-top: 4px; }
+        .balance-title { font-size: 12px; color: var(--text-secondary); }
+        .balance-amount { font-size: 18px; font-weight: bold; margin-top: 2px; color: var(--accent); }
         .deposit-btn {
             background: var(--accent);
             color: #000;
             border: none;
-            padding: 8px 14px;
+            padding: 8px 12px;
             font-weight: bold;
+            font-size: 13px;
             border-radius: 8px;
             cursor: pointer;
         }
 
-        /* Bozor va Narx qismi */
+        /* Bozor paneli */
         .market-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: var(--card-bg);
-            padding: 14px;
+            padding: 12px 14px;
             border-radius: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
-        .pair-name { font-size: 18px; font-weight: bold; }
-        .current-price { font-size: 20px; font-weight: bold; }
-        .price-up { color: var(--green); }
-        .price-down { color: var(--red); }
+        .pair-name { font-size: 16px; font-weight: bold; }
+        .current-price { font-size: 18px; font-weight: bold; }
 
-        /* Grafik simulyatsiyasi oynasi */
+        /* Grafik qismi */
         .chart-box {
             background: var(--card-bg);
-            height: 180px;
+            height: 140px;
             border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 12px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 16px;
-            position: relative;
+            align-items: flex-end;
+            gap: 4px;
             overflow: hidden;
             border: 1px solid #2b313a;
         }
-        .chart-text { color: var(--text-secondary); font-size: 14px; }
+        .chart-bar {
+            flex: 1;
+            background: var(--accent);
+            border-radius: 2px 2px 0 0;
+            transition: height 0.3s ease;
+        }
 
-        /* Savdo boshqaruvi (Trading controls) */
+        /* Savdo boshqaruvi */
         .trade-controls {
             background: var(--card-bg);
-            padding: 16px;
+            padding: 14px;
             border-radius: 12px;
-            margin-bottom: 16px;
-        }
-        .input-group {
             margin-bottom: 12px;
         }
-        .input-group label { display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+        .input-group { margin-bottom: 10px; }
+        .input-group label { display: block; font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; }
         .input-group input {
             width: 100%;
-            background: #121619;
+            background: #0b0e11;
             border: 1px solid #2b313a;
-            padding: 12px;
+            padding: 10px;
             color: #fff;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 15px;
             outline: none;
         }
-        .action-buttons {
-            display: flex;
-            gap: 10px;
-        }
+        .action-buttons { display: flex; gap: 10px; }
         .btn-long {
-            flex: 1;
-            background: var(--green);
-            color: #fff;
-            border: none;
-            padding: 14px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
+            flex: 1; background: var(--green); color: #fff; border: none;
+            padding: 12px; font-size: 15px; font-weight: bold; border-radius: 8px; cursor: pointer;
         }
         .btn-short {
-            flex: 1;
-            background: var(--red);
-            color: #fff;
-            border: none;
-            padding: 14px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
+            flex: 1; background: var(--red); color: #fff; border: none;
+            padding: 12px; font-size: 15px; font-weight: bold; border-radius: 8px; cursor: pointer;
         }
+
+        /* Ochiq pozitsiyalar va Tarix */
+        .section-title { font-size: 14px; font-weight: bold; margin-bottom: 8px; color: var(--text-secondary); }
+        .list-container { display: flex; flex-direction: column; gap: 8px; }
+        .list-item {
+            background: var(--card-bg);
+            padding: 10px 14px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            border-left: 4px solid var(--accent);
+        }
+        .item-green { border-left-color: var(--green); }
+        .item-red { border-left-color: var(--red); }
     </style>
 </head>
 <body>
@@ -127,25 +127,25 @@
     <div class="wallet-card">
         <div>
             <div class="balance-title">Hisob balansi</div>
-            <div class="balance-amount" id="user-balance">1,000.00 STAR</div>
+            <div class="balance-amount" id="user-balance">1000.00 STAR</div>
         </div>
-        <button class="deposit-btn" onclick="alert('Depozit oynasi ochiladi')">+ To'ldirish</button>
+        <button class="deposit-btn" onclick="addBalance()">+ To'ldirish</button>
     </div>
 
-    <!-- Bozor narxi (Binance'dan real vaqtda keladi) -->
+    <!-- Bozor narxi -->
     <div class="market-header">
         <div>
-            <div class="pair-name">BTC / USDT</div>
-            <div class="balance-title">Real vaqt birjasi</div>
+            <div class="pair-name">STAR / USDT</div>
+            <div class="balance-title">Shaxsiy Bozor</div>
         </div>
         <div>
-            <div class="current-price" id="btc-price">Yuklanmoqda...</div>
+            <div class="current-price" id="market-price">54200.00</div>
         </div>
     </div>
 
-    <!-- Grafik joyi -->
-    <div class="chart-box">
-        <div class="chart-text">📊 Real vaqt grafigi ulanyapti...</div>
+    <!-- Grafik simulyatsiyasi -->
+    <div class="chart-box" id="chart-container">
+        <!-- Grafik ustunlari dinamik qo'shiladi -->
     </div>
 
     <!-- Stavka ochish paneli -->
@@ -160,32 +160,150 @@
         </div>
     </div>
 
+    <!-- Faol pozitsiyalar -->
+    <div class="section-title">Faol Stavkalar</div>
+    <div class="list-container" id="active-trades">
+        <div class="list-item" style="color: var(--text-secondary); justify-content: center;">Hozircha faol stavkalar yo'q</div>
+    </div>
+
     <script>
         let tg = window.Telegram.WebApp;
-        tg.expand(); // Ilovani to'liq ekranga yoyish
+        tg.expand();
 
-        // Binance API orqali Bitcoin narxini jonli olish
-        async function fetchBinancePrice() {
-            try {
-                let response = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT');
-                let data = await response.json();
-                let price = parseFloat(data.price).toFixed(2);
-                
-                let priceElement = document.getElementById('btc-price');
-                priceElement.innerText = "$" + price;
-            } catch (e) {
-                console.log("Narxni olishda xatolik:", e);
+        let balance = 1000.00;
+        let currentPrice = 54200.00;
+        let priceHistory = [54100, 54150, 54120, 54180, 54200];
+        let activeTrades = [];
+
+        // Balansni yangilash
+        function updateUI() {
+            document.getElementById('user-balance').innerText = balance.toFixed(2) + " STAR";
+            document.getElementById('market-price').innerText = currentPrice.toFixed(2);
+            
+            let priceElem = document.getElementById('market-price');
+            if(priceHistory.length > 1) {
+                if(currentPrice >= priceHistory[priceHistory.length - 2]) {
+                    priceElem.style.color = "var(--green)";
+                } else {
+                    priceElem.style.color = "var(--red)";
+                }
             }
         }
 
-        // Har 1 soniyada narxni yangilab turish
-        setInterval(fetchBinancePrice, 1000);
-        fetchBinancePrice();
+        // Grafikni chizish
+        function renderChart() {
+            let container = document.getElementById('chart-container');
+            container.innerHTML = '';
+            let min = Math.min(...priceHistory);
+            let max = Math.max(...priceHistory);
+            let range = max - min || 1;
 
-        function placeTrade(type) {
-            let amount = document.getElementById('trade-amount').value;
-            tg.showAlert(`Siz ${amount} STAR miqdorida ${type} stavka ochdingiz!`);
+            priceHistory.forEach(val => {
+                let bar = document.createElement('div');
+                bar.className = 'chart-bar';
+                let heightPercent = ((val - min) / range) * 80 + 20;
+                bar.style.height = heightPercent + '%';
+                container.appendChild(bar);
+            });
         }
+
+        // Har 1.5 sekundda bozorni o'zgartirib turish (Simulyatsiya)
+        setInterval(() => {
+            let change = (Math.random() - 0.48) * 40; // Tasodifiy o'sish/pasayish
+            currentPrice += change;
+            
+            priceHistory.push(currentPrice);
+            if(priceHistory.length > 20) priceHistory.shift();
+
+            updateUI();
+            renderChart();
+            checkTrades();
+        }, 1500);
+
+        // Depozit qo'shish tugmasi
+        function addBalance() {
+            balance += 500;
+            updateUI();
+            tg.showAlert("Hisobingizga 500 STAR qo'shildi!");
+        }
+
+        // Stavka ochish
+        function placeTrade(type) {
+            let amount = parseFloat(document.getElementById('trade-amount').value);
+            if(isNaN(amount) || amount <= 0) {
+                tg.showAlert("Miqdorni noto'g'ri kiritdingiz!");
+                return;
+            }
+            if(amount > balance) {
+                tg.showAlert("Hisobingizda yetarli STAR yo'q!");
+                return;
+            }
+
+            balance -= amount;
+            updateUI();
+
+            let trade = {
+                id: Date.now(),
+                type: type,
+                amount: amount,
+                entryPrice: currentPrice,
+                timeLeft: 10 // 10 soniyadan keyin yopiladi
+            };
+
+            activeTrades.push(trade);
+            renderTrades();
+        }
+
+        // Faol stavkalarni boshqarish va tugatish
+        function checkTrades() {
+            let activeContainer = document.getElementById('active-trades');
+            
+            if(activeTrades.length === 0) {
+                activeContainer.innerHTML = `<div class="list-item" style="color: var(--text-secondary); justify-content: center;">Hozircha faol stavkalar yo'q</div>`;
+                return;
+            }
+
+            activeContainer.innerHTML = '';
+            let remainingTrades = [];
+
+            activeTrades.forEach(trade => {
+                trade.timeLeft--;
+                let diff = currentPrice - trade.entryPrice;
+                let isWin = (trade.type === 'LONG' && diff > 0) || (trade.type === 'SHORT' && diff < 0);
+                
+                if(trade.timeLeft <= 0) {
+                    // Stavka vaqti tugadi
+                    if(isWin) {
+                        let profit = trade.amount * 1.8;
+                        balance += profit;
+                        tg.showAlert(`Tabriklaymiz! Stavkangiz yutdi +${profit.toFixed(2)} STAR`);
+                    } else {
+                        tg.showAlert(`Afsuski, stavkangiz yutqazdi (-${trade.amount} STAR)`);
+                    }
+                } else {
+                    remainingTrades.push(trade);
+                    let item = document.createElement('div');
+                    item.className = `list-item ${isWin ? 'item-green' : 'item-red'}`;
+                    item.innerHTML = `
+                        <div>
+                            <b>${trade.type}</b> (${trade.amount} STAR)<br>
+                            <small style="color:var(--text-secondary)">Kirish: ${trade.entryPrice.toFixed(1)}</small>
+                        </div>
+                        <div>
+                            <span style="color:${isWin ? 'var(--green)' : 'var(--red)'}">${isWin ? 'Yutmoqda' : 'Yutqazmoqda'}</span><br>
+                            <small>Vaqt: ${trade.timeLeft}s</small>
+                        </div>
+                    `;
+                    activeContainer.appendChild(item);
+                }
+            });
+
+            activeTrades = remainingTrades;
+            updateUI();
+        }
+
+        updateUI();
+        renderChart();
     </script>
 </body>
 </html>
