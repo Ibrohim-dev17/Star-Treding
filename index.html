@@ -1,192 +1,537 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chevarxona Boshqaruv Tizimi - Xodim Kirish</title>
-<style>
-:root {
---bg-color: #07090e;
---card-bg: rgba(13, 17, 28, 0.85);
---border-color: rgba(255, 255, 255, 0.08);
---primary: #3b82f6;
---primary-hover: #2563eb;
---text-main: #f8fafc;
---text-muted: #64748b;
---transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-​* {
-box-sizing: border-box;
-margin: 0;
-padding: 0;
-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-​body {
-background-color: var(--bg-color);
-background-image:
-radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
-radial-gradient(circle at 90% 80%, rgba(15, 23, 42, 0.4) 0%, transparent 40%);
-color: var(--text-main);
-height: 100vh;
-display: flex;
-justify-content: center;
-align-items: center;
-overflow: hidden;
-}
-​.auth-card {
-background: var(--card-bg);
-backdrop-filter: blur(20px);
--webkit-backdrop-filter: blur(20px);
-border: 1px solid var(--border-color);
-padding: 45px 40px;
-border-radius: 20px;
-width: 100%;
-max-width: 420px;
-box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-animation: cardAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-​@keyframes cardAppear {
-from { opacity: 0; transform: translateY(20px) scale(0.98); }
-to { opacity: 1; transform: translateY(0) scale(1); }
-}
-​.logo-area {
-text-align: center;
-margin-bottom: 35px;
-}
-​.brand-logo {
-display: inline-flex;
-justify-content: center;
-align-items: center;
-width: 64px;
-height: 64px;
-background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-border-radius: 16px;
-margin-bottom: 16px;
-box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
-position: relative;
-}
-​.brand-logo::after {
-content: '';
-width: 24px;
-height: 2px;
-background: #ffffff;
-border-radius: 2px;
-box-shadow: 0 6px 0 #ffffff, 0 -6px 0 #ffffff;
-}
-​.logo-area h2 {
-font-size: 22px;
-font-weight: 700;
-letter-spacing: 0.5px;
-color: #ffffff;
-}
-​.logo-area p {
-color: var(--text-muted);
-font-size: 13px;
-margin-top: 6px;
-font-weight: 400;
-}
-​.input-group {
-margin-bottom: 20px;
-}
-​.input-group label {
-display: block;
-font-size: 12px;
-font-weight: 500;
-color: var(--text-muted);
-margin-bottom: 8px;
-text-transform: uppercase;
-letter-spacing: 0.5px;
-}
-​.input-group input {
-width: 100%;
-padding: 14px 16px;
-background: rgba(255, 255, 255, 0.02);
-border: 1px solid var(--border-color);
-border-radius: 12px;
-color: #ffffff;
-font-size: 14px;
-outline: none;
-transition: var(--transition);
-}
-​.input-group input:focus {
-border-color: var(--primary);
-background: rgba(59, 130, 246, 0.03);
-box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
-}
-​.btn-primary {
-width: 100%;
-padding: 14px;
-background: var(--primary);
-color: white;
-border: none;
-border-radius: 12px;
-font-size: 15px;
-font-weight: 600;
-cursor: pointer;
-transition: var(--transition);
-margin-top: 10px;
-box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-}
-​.btn-primary:hover {
-background: var(--primary-hover);
-transform: translateY(-1px);
-box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
-}
-​.btn-primary:active {
-transform: translateY(0);
-}
-​.admin-link-area {
-margin-top: 25px;
-text-align: center;
-border-top: 1px solid var(--border-color);
-padding-top: 20px;
-}
-​.boss-portal-link {
-color: var(--text-muted);
-font-size: 13px;
-text-decoration: none;
-transition: var(--transition);
-font-weight: 500;
-}
-​.boss-portal-link:hover {
-color: var(--primary);
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chevarxona Boshqaruv Tizimi</title>
+    <style>
+        :root {
+            --bg-color: #07090e;
+            --card-bg: rgba(13, 17, 28, 0.85);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --success: #10b981;
+            --danger: #ef4444;
+            --text-main: #f8fafc;
+            --text-muted: #64748b;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(15, 23, 42, 0.4) 0%, transparent 40%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Umumiy ekran qismlari */
+        .app-view {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .app-view.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Kirish oynasi (Auth) */
+        .auth-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            padding: 45px 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        .logo-area {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .brand-logo {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+            position: relative;
+        }
+
+        .brand-logo::after {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 2px;
+            box-shadow: 0 6px 0 #ffffff, 0 -6px 0 #ffffff;
+        }
+
+        .logo-area h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .logo-area p {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 6px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
+
+        .switch-auth {
+            margin-top: 25px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        .switch-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 13px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .switch-btn:hover {
+            color: var(--primary);
+        }
+
+        /* Xodim paneli (Mobil Container) */
+        .worker-container {
+            width: 100%;
+            max-width: 440px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+        }
+
+        .worker-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .btn-logout {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: var(--transition);
+        }
+
+        .btn-logout:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .timer-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .timer-card h1 {
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--success);
+            margin: 15px 0 25px 0;
+            letter-spacing: 1px;
+        }
+
+        .btn-action {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: var(--transition);
+        }
+
+        .btn-success { background: var(--success); color: white; }
+        .btn-success:hover { background: #059669; }
+        
+        .btn-danger { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: var(--danger); }
+        .btn-danger:hover { background: rgba(239, 68, 68, 0.2); }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .info-box {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            padding: 18px;
+            border-radius: 14px;
+        }
+
+        .info-box p { font-size: 11px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 5px; }
+        .info-box h3 { font-size: 16px; color: white; }
+
+        /* Admin Panel (Desktop) */
+        .admin-container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            background: var(--bg-color);
+        }
+
+        .sidebar {
+            width: 280px;
+            background: var(--card-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar h2 { font-size: 18px; color: var(--primary); margin-bottom: 40px; padding-left: 10px; }
+        .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+        .sidebar-menu button {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .sidebar-menu button.active, .sidebar-menu button:hover {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--text-main);
+        }
+
+        .admin-main {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            border-radius: 16px;
+        }
+
+        .stat-card p { color: var(--text-muted); font-size: 13px; margin-bottom: 8px; }
+        .stat-card h2 { font-size: 26px; font-weight: 700; }
+
+        .table-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 16px;
+        }
+
+        .table-card h3 { margin-bottom: 20px; font-size: 18px; font-weight: 600; }
+
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+        th { color: var(--text-muted); padding-bottom: 14px; border-bottom: 1px solid var(--border-color); font-weight: 500; }
+        td { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        
+        .price-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            width: 130px;
+            outline: none;
+        }
+        .price-input:focus { border-color: var(--primary); }
+    </style>
 </head>
 <body>
-​<div class="auth-card">
-<div class="logo-area">
-<div class="brand-logo"></div>
-<h2>CHEVARXONA</h2>
-<p>Xodimlar uchun boshqaruv tizimi</p>
-</div>
-​<form id="workerLoginForm">
-<div class="input-group">
-<label>Telefon raqam</label>
-<input type="text" id="phone" placeholder="+998 90 123 45 67" required>
-</div>
-<div class="input-group">
-<label>Parol</label>
-<input type="password" id="password" placeholder="••••••••" required>
-</div>
-<button type="submit" class="btn-primary">Tizimga kirish</button>
-</form>
-​<div class="admin-link-area">
-<a href="boss-login.html" class="boss-portal-link">Rahbariyat uchun maxsus kirish</a>
-</div>
-</div>
-​<script>
-document.getElementById('workerLoginForm').addEventListener('submit', function(e) {
-e.preventDefault();
-const phoneInput = document.getElementById('phone').value.trim();
-const passwordInput = document.getElementById('password').value.trim();
-​if (phoneInput && passwordInput) {
-// Xodim sifatida tizimga muvaffaqiyatli kirish simulyatsiyasi
-window.location.href = 'worker.html';
-} else {
-alert('Iltimos, barcha maydonlarni to'ldiring!');
-}
-});
-</script>
+
+    <!-- 1. XODIM KIRISH OYNASI -->
+    <div id="workerAuthView" class="app-view active">
+        <div class="auth-card">
+            <div class="logo-area">
+                <div class="brand-logo"></div>
+                <h2>CHEVARXONA</h2>
+                <p>Xodimlar uchun tizim</p>
+            </div>
+
+            <form id="workerLoginForm" onsubmit="loginAsWorker(event)">
+                <div class="input-group">
+                    <label>Telefon raqam</label>
+                    <input type="text" id="workerPhone" placeholder="+998 90 123 45 67" required>
+                </div>
+                <div class="input-group">
+                    <label>Parol</label>
+                    <input type="password" id="workerPass" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary">Tizimga kirish</button>
+            </form>
+
+            <div class="switch-auth">
+                <button class="switch-btn" onclick="switchView('bossAuthView')">Rahbariyat uchun maxsus kirish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. RAHBAR KIRISH OYNASI -->
+    <div id="bossAuthView" class="app-view">
+        <div class="auth-card">
+            <div class="logo-area">
+                <div class="brand-logo" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);"></div>
+                <h2>ADMIN PORTAL</h2>
+                <p>Faqat rahbarlar uchun</p>
+            </div>
+
+            <form id="bossLoginForm" onsubmit="loginAsBoss(event)">
+                <div class="input-group">
+                    <label>Maxfiy Rahbar Kaliti</label>
+                    <input type="password" id="bossKey" placeholder="••••••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary" style="background: #10b981; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">Panelga Kirish</button>
+            </form>
+
+            <div class="switch-auth">
+                <button class="switch-btn" onclick="switchView('workerAuthView')">Orqaga qaytish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. XODIMNING SHAXSIY KABINETI -->
+    <div id="workerDashboardView" class="app-view">
+        <div class="worker-container">
+            <div class="worker-header">
+                <div>
+                    <h3 style="font-size: 17px; font-weight: 600;">Oybek Abdullaev</h3>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Juma - Dam olish kuni</p>
+                </div>
+                <button class="btn-logout" onclick="switchView('workerAuthView')">Chiqish</button>
+            </div>
+
+            <div class="timer-card">
+                <p>Bugungi ishlangan vaqt</p>
+                <h1 id="liveTimer">05:42:15</h1>
+                <button class="btn-action btn-success">TANAFFUSDAN QAYTISH</button>
+                <button class="btn-action btn-danger">ISHDAN KETISH</button>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <p>Bugungi maosh</p>
+                    <h3 id="currentSalary">412,500 so'm</h3>
+                </div>
+                <div class="info-box">
+                    <p>Soatlik stavka</p>
+                    <h3 id="currentRate">50,000 so'm</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. RAHBARNING ADMIN PANELI -->
+    <div id="adminDashboardView" class="app-view">
+        <div class="admin-container">
+            <div class="sidebar">
+                <h2>Boshqaruv Tizimi</h2>
+                <ul class="sidebar-menu">
+                    <li><button class="active">Asosiy Panel</button></li>
+                    <li><button>Xodimlar va Narxlar</button></li>
+                    <li><button>Hisobotlar</button></li>
+                    <li style="margin-top: auto;"><button onclick="switchView('bossAuthView')" style="color: var(--danger);">Tizimdan chiqish</button></li>
+                </ul>
+            </div>
+
+            <div class="admin-main">
+                <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 25px;">Rahbar Dashboardi</h1>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <p>Bugun ishda</p>
+                        <h2>96 / 128</h2>
+                    </div>
+                    <div class="stat-card">
+                        <p>Umumiy ishlangan soat</p>
+                        <h2>856 soat</h2>
+                    </div>
+                    <div class="stat-card">
+                        <p>Bugungi oylik fondi</p>
+                        <h2 style="color: var(--success);">9,856,000 so'm</h2>
+                    </div>
+                </div>
+
+                <div class="table-card">
+                    <h3>Xodimlar Soatlik Stavkasini Boshqarish</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>F.I.O</th>
+                                <th>Lavozim</th>
+                                <th>Soatlik Narx (So'm)</th>
+                                <th>Bugungi Hisob</th>
+                                <th>Holati</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oybek Abdullaev</td>
+                                <td>Tikuvchi</td>
+                                <td><input type="number" value="50000" class="price-input" oninput="updateRate(this.value)"></td>
+                                <td>412,500 so'm</td>
+                                <td><span style="color: var(--success);">Faol</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sahifalararo o'tish funksiyasi
+        function switchView(viewId) {
+            document.querySelectorAll('.app-view').forEach(view => {
+                view.classList.remove('active');
+            });
+            document.getElementById(viewId).classList.add('active');
+        }
+
+        // Xodim sifatida kirish
+        function loginAsWorker(e) {
+            e.preventDefault();
+            switchView('workerDashboardView');
+        }
+
+        // Boshliq sifatida kirish
+        function loginAsBoss(e) {
+            e.preventDefault();
+            const key = document.getElementById('bossKey').value;
+            if (key === "boss123") {
+                switchView('adminDashboardView');
+            } else {
+                alert("Maxfiy kalit xato kiritildi!");
+            }
+        }
+
+        // Admin paneldan turib stavka o'zgarganda xodim panelida ham yangilanishi
+        function updateRate(newRate) {
+            const rateElem = document.getElementById('currentRate');
+            if(rateElem) {
+                rateElem.innerText = Number(newRate).toLocaleString() + " so'm";
+            }
+        }
+
+        // Jonli vaqt hisoblagichi (Timer)
+        let seconds = 20535;
+        setInterval(() => {
+            seconds++;
+            let hrs = Math.floor(seconds / 3600);
+            let mins = Math.floor((seconds % 3600) / 60);
+            let secs = seconds % 60;
+            const timerElem = document.getElementById('liveTimer');
+            if(timerElem) {
+                timerElem.innerText = `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
