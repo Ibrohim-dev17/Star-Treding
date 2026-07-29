@@ -3,399 +3,190 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Chevarxona HRM</title>
-
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-
+<title>Chevarxona Boshqaruv Tizimi - Xodim Kirish</title>
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+:root {
+--bg-color: #07090e;
+--card-bg: rgba(13, 17, 28, 0.85);
+--border-color: rgba(255, 255, 255, 0.08);
+--primary: #3b82f6;
+--primary-hover: #2563eb;
+--text-main: #f8fafc;
+--text-muted: #64748b;
+--transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-body{
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:
-linear-gradient(135deg,#0f172a,#111827,#1e293b);
-
-overflow:hidden;
-
+​* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
-
-body::before{
-
-content:"";
-
-position:absolute;
-
-width:600px;
-
-height:600px;
-
-background:#2563eb;
-
-filter:blur(180px);
-
-opacity:.25;
-
-top:-250px;
-
-left:-200px;
-
+​body {
+background-color: var(--bg-color);
+background-image:
+radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+radial-gradient(circle at 90% 80%, rgba(15, 23, 42, 0.4) 0%, transparent 40%);
+color: var(--text-main);
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
 }
-
-body::after{
-
-content:"";
-
-position:absolute;
-
-width:500px;
-
-height:500px;
-
-background:#8b5cf6;
-
-filter:blur(180px);
-
-opacity:.25;
-
-bottom:-200px;
-
-right:-150px;
-
+​.auth-card {
+background: var(--card-bg);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid var(--border-color);
+padding: 45px 40px;
+border-radius: 20px;
+width: 100%;
+max-width: 420px;
+box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+animation: cardAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.card{
-
-position:relative;
-
-z-index:10;
-
-width:380px;
-
-background:rgba(255,255,255,.08);
-
-backdrop-filter:blur(25px);
-
-border:1px solid rgba(255,255,255,.1);
-
-border-radius:28px;
-
-padding:35px;
-
-box-shadow:0 20px 80px rgba(0,0,0,.45);
-
-animation:show .7s;
-
+​@keyframes cardAppear {
+from { opacity: 0; transform: translateY(20px) scale(0.98); }
+to { opacity: 1; transform: translateY(0) scale(1); }
 }
-
-@keyframes show{
-
-from{
-
-opacity:0;
-
-transform:translateY(40px);
-
+​.logo-area {
+text-align: center;
+margin-bottom: 35px;
 }
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
+​.brand-logo {
+display: inline-flex;
+justify-content: center;
+align-items: center;
+width: 64px;
+height: 64px;
+background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+border-radius: 16px;
+margin-bottom: 16px;
+box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+position: relative;
 }
-
+​.brand-logo::after {
+content: '';
+width: 24px;
+height: 2px;
+background: #ffffff;
+border-radius: 2px;
+box-shadow: 0 6px 0 #ffffff, 0 -6px 0 #ffffff;
 }
-
-.logo{
-
-width:80px;
-
-height:80px;
-
-border-radius:25px;
-
-background:linear-gradient(135deg,#3b82f6,#7c3aed);
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-size:35px;
-
-margin:auto;
-
-margin-bottom:25px;
-
-box-shadow:0 10px 40px rgba(59,130,246,.5);
-
+​.logo-area h2 {
+font-size: 22px;
+font-weight: 700;
+letter-spacing: 0.5px;
+color: #ffffff;
 }
-
-h1{
-
-text-align:center;
-
-font-size:28px;
-
-margin-bottom:8px;
-
+​.logo-area p {
+color: var(--text-muted);
+font-size: 13px;
+margin-top: 6px;
+font-weight: 400;
 }
-
-p{
-
-text-align:center;
-
-color:#cbd5e1;
-
-margin-bottom:30px;
-
+​.input-group {
+margin-bottom: 20px;
 }
-
-.input{
-
-width:100%;
-
-height:55px;
-
-background:rgba(255,255,255,.05);
-
-border:none;
-
-outline:none;
-
-border-radius:16px;
-
-padding:0 18px;
-
-color:white;
-
-font-size:16px;
-
-margin-bottom:18px;
-
-border:1px solid rgba(255,255,255,.06);
-
-transition:.3s;
-
+​.input-group label {
+display: block;
+font-size: 12px;
+font-weight: 500;
+color: var(--text-muted);
+margin-bottom: 8px;
+text-transform: uppercase;
+letter-spacing: 0.5px;
 }
-
-.input:focus{
-
-border-color:#3b82f6;
-
-box-shadow:0 0 20px rgba(59,130,246,.3);
-
+​.input-group input {
+width: 100%;
+padding: 14px 16px;
+background: rgba(255, 255, 255, 0.02);
+border: 1px solid var(--border-color);
+border-radius: 12px;
+color: #ffffff;
+font-size: 14px;
+outline: none;
+transition: var(--transition);
 }
-
-button{
-
-width:100%;
-
-height:56px;
-
-border:none;
-
-border-radius:16px;
-
-cursor:pointer;
-
-font-size:17px;
-
-font-weight:600;
-
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-
-color:white;
-
-transition:.3s;
-
+​.input-group input:focus {
+border-color: var(--primary);
+background: rgba(59, 130, 246, 0.03);
+box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
 }
-
-button:hover{
-
-transform:translateY(-3px);
-
+​.btn-primary {
+width: 100%;
+padding: 14px;
+background: var(--primary);
+color: white;
+border: none;
+border-radius: 12px;
+font-size: 15px;
+font-weight: 600;
+cursor: pointer;
+transition: var(--transition);
+margin-top: 10px;
+box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
-
-.bottom{
-
-margin-top:22px;
-
-display:flex;
-
-justify-content:space-between;
-
-font-size:14px;
-
+​.btn-primary:hover {
+background: var(--primary-hover);
+transform: translateY(-1px);
+box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
 }
-
-.bottom a{
-
-text-decoration:none;
-
-color:#60a5fa;
-
+​.btn-primary:active {
+transform: translateY(0);
 }
-
-.version{
-
-margin-top:28px;
-
-text-align:center;
-
-font-size:12px;
-
-color:#64748b;
-
+​.admin-link-area {
+margin-top: 25px;
+text-align: center;
+border-top: 1px solid var(--border-color);
+padding-top: 20px;
 }
-
-.loading{
-
-display:none;
-
-margin-top:20px;
-
-text-align:center;
-
+​.boss-portal-link {
+color: var(--text-muted);
+font-size: 13px;
+text-decoration: none;
+transition: var(--transition);
+font-weight: 500;
 }
-
-.loader{
-
-width:45px;
-
-height:45px;
-
-border:4px solid rgba(255,255,255,.15);
-
-border-top:4px solid #3b82f6;
-
-border-radius:50%;
-
-margin:auto;
-
-animation:spin .8s linear infinite;
-
+​.boss-portal-link:hover {
+color: var(--primary);
 }
-
-@keyframes spin{
-
-100%{
-
-transform:rotate(360deg);
-
-}
-
-}
-
-.loading p{
-
-margin-top:15px;
-
-}
-
 </style>
-
 </head>
-
 <body>
-
-<div class="card">
-
-<div class="logo">
-🧵
+​<div class="auth-card">
+<div class="logo-area">
+<div class="brand-logo"></div>
+<h2>CHEVARXONA</h2>
+<p>Xodimlar uchun boshqaruv tizimi</p>
 </div>
-
-<h1>Chevarxona HRM</h1>
-
-<p>Xodimlarni boshqarish tizimi</p>
-
-<input
-class="input"
-id="username"
-placeholder="Login">
-
-<input
-class="input"
-id="password"
-type="password"
-placeholder="Parol">
-
-<button onclick="login()">
-
-Tizimga kirish
-
-</button>
-
-<div class="loading" id="loading">
-
-<div class="loader"></div>
-
-<p>Tekshirilmoqda...</p>
-
+​<form id="workerLoginForm">
+<div class="input-group">
+<label>Telefon raqam</label>
+<input type="text" id="phone" placeholder="+998 90 123 45 67" required>
 </div>
-
-<div class="bottom">
-
-<a href="#">Parolni unutdim</a>
-
-<a href="#">Yordam</a>
-
+<div class="input-group">
+<label>Parol</label>
+<input type="password" id="password" placeholder="••••••••" required>
 </div>
-
-<div class="version">
-
-Version 1.0
-
+<button type="submit" class="btn-primary">Tizimga kirish</button>
+</form>
+​<div class="admin-link-area">
+<a href="boss-login.html" class="boss-portal-link">Rahbariyat uchun maxsus kirish</a>
 </div>
-
 </div>
-
-<script>
-
-const tg=window.Telegram.WebApp;
-
-tg.expand();
-
-function login(){
-
-document.getElementById("loading").style.display="block";
-
-setTimeout(()=>{
-
-const login=document.getElementById("username").value;
-
-if(login.toLowerCase()=="admin"){
-
-location.href="admin-dashboard.html";
-
-}else{
-
-location.href="worker-dashboard.html";
-
+​<script>
+document.getElementById('workerLoginForm').addEventListener('submit', function(e) {
+e.preventDefault();
+const phoneInput = document.getElementById('phone').value.trim();
+const passwordInput = document.getElementById('password').value.trim();
+​if (phoneInput && passwordInput) {
+// Xodim sifatida tizimga muvaffaqiyatli kirish simulyatsiyasi
+window.location.href = 'worker.html';
+} else {
+alert('Iltimos, barcha maydonlarni to'ldiring!');
 }
-
-},1500);
-
-}
-
+});
 </script>
-
 </body>
 </html>
