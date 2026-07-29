@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ishchi Paneli</title>
+    <link rel="stylesheet" href="css/style.min.html">
+</head>
+<body>
+    <div class="container animate-fade">
+        <div class="top-nav">
+            <a href="index.html" class="back-btn">← Orqaga</a>
+            <h2>Salom, Ustoz! 👋</h2>
+        </div>
+
+        <div class="glass-card timer-display">
+            <span id="current-time">00:00:00</span>
+            <p id="work-status" class="status-badge active">Hozircha ishda emassiz</p>
+        </div>
+
+        <div class="action-grid">
+            <button class="btn btn-success" onclick="startWork()">🟢 Ishni Boshlash</button>
+            <button class="btn btn-warning" onclick="toggleBreak()">☕ Tanaffus</button>
+            <button class="btn btn-danger" onclick="endWork()">🔴 Ishni Tugatish</button>
+        </div>
+
+        <div class="glass-card info-card">
+            <h4>Bugungi ko'rsatkich</h4>
+            <div class="stat-row">
+                <span>Ishlangan vaqt:</span>
+                <strong id="worked-hours">0 soat 0 min</strong>
+            </div>
+            <div class="stat-row">
+                <span>Tanaffus vaqti:</span>
+                <strong id="break-hours">0 min</strong>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
