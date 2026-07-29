@@ -2,370 +2,47 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Star-Trading Pro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chevarxona Davomat Tizimi</title>
+    <link rel="stylesheet" href="css/style.min.html">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        :root {
-            --bg-color: #0b0e11;
-            --card-bg: #1e2329;
-            --text-color: #eaecef;
-            --text-secondary: #848e9c;
-            --green: #0ecb81;
-            --red: #f6465d;
-            --accent: #f0b90b;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-color); padding: 10px; padding-bottom: 40px; }
-        
-        /* Balans qismi */
-        .wallet-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        .balance-title { font-size: 12px; color: var(--text-secondary); }
-        .balance-amount { font-size: 18px; font-weight: bold; margin-top: 2px; color: var(--accent); }
-        .deposit-btn {
-            background: var(--accent);
-            color: #000;
-            border: none;
-            padding: 8px 12px;
-            font-weight: bold;
-            font-size: 13px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        /* Bozor narxi */
-        .market-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--card-bg);
-            padding: 12px 14px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-        }
-        .pair-name { font-size: 16px; font-weight: bold; }
-        .current-price { font-size: 18px; font-weight: bold; }
-
-        /* Shamlar grafigi (Candlestick Chart) */
-        .chart-box {
-            background: var(--card-bg);
-            height: 180px;
-            border-radius: 12px;
-            padding: 10px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            overflow: hidden;
-            border: 1px solid #2b313a;
-            position: relative;
-        }
-        .candle {
-            flex: 1;
-            margin: 0 2px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-        }
-        .wick {
-            width: 2px;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-        }
-        .body-candle {
-            width: 80%;
-            position: absolute;
-            border-radius: 2px;
-        }
-        .candle-green .wick, .candle-green .body-candle { background-color: var(--green); }
-        .candle-red .wick, .candle-red .body-candle { background-color: var(--red); }
-
-        /* Savdo boshqaruvi */
-        .trade-controls {
-            background: var(--card-bg);
-            padding: 14px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-        }
-        .input-group { margin-bottom: 10px; }
-        .input-group label { display: block; font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; }
-        .input-group input {
-            width: 100%;
-            background: #0b0e11;
-            border: 1px solid #2b313a;
-            padding: 10px;
-            color: #fff;
-            border-radius: 8px;
-            font-size: 15px;
-            outline: none;
-        }
-        .action-buttons { display: flex; gap: 10px; }
-        .btn-long {
-            flex: 1; background: var(--green); color: #fff; border: none;
-            padding: 12px; font-size: 15px; font-weight: bold; border-radius: 8px; cursor: pointer;
-        }
-        .btn-short {
-            flex: 1; background: var(--red); color: #fff; border: none;
-            padding: 12px; font-size: 15px; font-weight: bold; border-radius: 8px; cursor: pointer;
-        }
-
-        /* Faol pozitsiyalar va Tarix */
-        .section-title { font-size: 14px; font-weight: bold; margin-bottom: 8px; color: var(--text-secondary); }
-        .list-container { display: flex; flex-direction: column; gap: 8px; }
-        .list-item {
-            background: var(--card-bg);
-            padding: 10px 14px;
-            border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 13px;
-            border-left: 4px solid var(--accent);
-        }
-        .item-green { border-left-color: var(--green); }
-        .item-red { border-left-color: var(--red); }
-    </style>
 </head>
 <body>
+    <div class="container animate-fade">
+        <header class="app-header">
+            <div class="logo-icon">✂️</div>
+            <h1>Chevarxona CRM</h1>
+            <p>Ish vaqtini nazorat qilish tizimi</p>
+        </header>
 
-    <!-- Balans -->
-    <div class="wallet-card">
-        <div>
-            <div class="balance-title">Hisob balansi</div>
-            <div class="balance-amount" id="user-balance">1000.00 STAR</div>
+        <div class="menu-cards">
+            <a href="worker.html" class="glass-card nav-card">
+                <span class="card-icon">👤</span>
+                <div class="card-info">
+                    <h3>Ishchi Paneli</h3>
+                    <p>Kelish, ketish va tanaffusni belgilash</p>
+                </div>
+                <span class="arrow">➔</span>
+            </a>
+
+            <a href="admin.html" class="glass-card nav-card">
+                <span class="card-icon">👑</span>
+                <div class="card-info">
+                    <h3>Boshliq Paneli</h3>
+                    <p>Real vaqt nazorati va juma kunlari sozlamasi</p>
+                </div>
+                <span class="arrow">➔</span>
+            </a>
+
+            <a href="stats.html" class="glass-card nav-card">
+                <span class="card-icon">📊</span>
+                <div class="card-info">
+                    <h3>Statistika va Chartlar</h3>
+                    <p>Kunlik, haftalik, oylik diagrammalar</p>
+                </div>
+                <span class="arrow">➔</span>
+            </a>
         </div>
-        <button class="deposit-btn" onclick="addBalance()">+ To'ldirish</button>
     </div>
-
-    <!-- Bozor narxi -->
-    <div class="market-header">
-        <div>
-            <div class="pair-name">STAR / USDT</div>
-            <div class="balance-title">Shaxsiy Realistik Bozor</div>
-        </div>
-        <div>
-            <div class="current-price" id="market-price">54200.00</div>
-        </div>
-    </div>
-
-    <!-- Shamlar (Candlestick) grafigi -->
-    <div class="chart-box" id="chart-container">
-        <!-- Shamlar dinamik tarzda chiziladi -->
-    </div>
-
-    <!-- Stavka ochish paneli -->
-    <div class="trade-controls">
-        <div class="input-group">
-            <label>Stavka summasi (STAR)</label>
-            <input type="number" id="trade-amount" value="50" min="1">
-        </div>
-        <div class="action-buttons">
-            <button class="btn-long" onclick="placeTrade('LONG')">🟢 LONG (O'sadi)</button>
-            <button class="btn-short" onclick="placeTrade('SHORT')">🔴 SHORT (Tushadi)</button>
-        </div>
-    </div>
-
-    <!-- Faol pozitsiyalar -->
-    <div class="section-title">Faol Stavkalar</div>
-    <div class="list-container" id="active-trades">
-        <div class="list-item" style="color: var(--text-secondary); justify-content: center;">Hozircha faol stavkalar yo'q</div>
-    </div>
-
-    <script>
-        let tg = window.Telegram.WebApp;
-        tg.expand();
-
-        let balance = 1000.00;
-        let currentPrice = 54200.00;
-        let activeTrades = [];
-
-        // Shamlar tarixi (Har bir sham: open, high, low, close)
-        let candles = [];
-        for(let i = 0; i < 12; i++) {
-            let pOpen = currentPrice + (Math.random() - 0.5) * 30;
-            let pClose = pOpen + (Math.random() - 0.5) * 40;
-            let pHigh = Math.max(pOpen, pClose) + Math.random() * 15;
-            let pLow = Math.min(pOpen, pClose) - Math.random() * 15;
-            candles.push({ open: pOpen, high: pHigh, low: pLow, close: pClose });
-            currentPrice = pClose;
-        }
-
-        // UI va Narxni yangilash
-        function updateUI() {
-            document.getElementById('user-balance').innerText = balance.toFixed(2) + " STAR";
-            let priceElem = document.getElementById('market-price');
-            priceElem.innerText = currentPrice.toFixed(2);
-            
-            let lastCandle = candles[candles.length - 1];
-            if(lastCandle.close >= lastCandle.open) {
-                priceElem.style.color = "var(--green)";
-            } else {
-                priceElem.style.color = "var(--red)";
-            }
-        }
-
-        // Haqiqiy Shamlar (Candlestick) grafigini chizish
-        function renderChart() {
-            let container = document.getElementById('chart-container');
-            container.innerHTML = '';
-
-            let minPrice = Math.min(...candles.map(c => c.low));
-            let maxPrice = Math.max(...candles.map(c => c.high));
-            let range = maxPrice - minPrice || 1;
-            let boxHeight = container.clientHeight - 20;
-
-            candles.forEach(c => {
-                let isGreen = c.close >= c.open;
-                let candleDiv = document.createElement('div');
-                candleDiv.className = `candle ${isGreen ? 'candle-green' : 'candle-red'}`;
-
-                // Fitil (Wick) o'lchamlari
-                let topPercent = ((maxPrice - c.high) / range) * boxHeight;
-                let bottomPercent =((c.low - minPrice) / range) * boxHeight;
-                
-                let wick = document.createElement('div');
-                wick.className = 'wick';
-                wick.style.top = topPercent + 'px';
-                wick.style.bottom = bottomPercent + 'px';
-
-                // Tana (Body) o'lchamlari
-                let bodyTop = Math.max(c.open, c.close);
-                let bodyBottom = Math.min(c.open, c.close);
-                let bodyTopPercent = ((maxPrice - bodyTop) / range) * boxHeight;
-                let bodyHeightPercent = Math.max(((bodyTop - bodyBottom) / range) * boxHeight, 3); // Minimal balandlik
-
-                let body = document.createElement('div');
-                body.className = 'body-candle';
-                body.style.top = bodyTopPercent + 'px';
-                body.style.height = bodyHeightPercent + 'px';
-
-                candleDiv.appendChild(wick);
-                candleDiv.appendChild(body);
-                container.appendChild(candleDiv);
-            });
-        }
-
-        // Bozorning tabiiy harakati (Har soniyada so'nggi sham o'zgarib turadi)
-        setInterval(() => {
-            let change = (Math.random() - 0.49) * 15;
-            currentPrice += change;
-
-            let activeCandle = candles[candles.length - 1];
-            activeCandle.close = currentPrice;
-            if (currentPrice > activeCandle.high) activeCandle.high = currentPrice;
-            if (currentPrice < activeCandle.low) activeCandle.low = currentPrice;
-
-            // Har 6 soniyada yangi sham ochish
-            if(Math.random() < 0.2) {
-                let pOpen = currentPrice;
-                candles.push({ open: pOpen, high: pOpen, low: pOpen, close: pOpen });
-                if(candles.length > 15) candles.shift(); // Eski shamni o'chirish
-            }
-
-            updateUI();
-            renderChart();
-            checkTrades();
-        }, 1000);
-
-        // Depozit tugmasi
-        function addBalance() {
-            balance += 500;
-            updateUI();
-            tg.showAlert("Hisobingizga 500 STAR qo'shildi!");
-        }
-
-        // Stavka ochish
-        function placeTrade(type) {
-            let amount = parseFloat(document.getElementById('trade-amount').value);
-            if(isNaN(amount) || amount <= 0) {
-                tg.showAlert("Miqdorni noto'g'ri kiritdingiz!");
-                return;
-            }
-            if(amount > balance) {
-                tg.showAlert("Hisobingizda yetarli STAR yo'q!");
-                return;
-            }
-
-            balance -= amount;
-            updateUI();
-
-            let trade = {
-                id: Date.now(),
-                type: type,
-                amount: amount,
-                entryPrice: currentPrice,
-                timeLeft: 10 // 10 soniya
-            };
-
-            activeTrades.push(trade);
-            renderTradesList();
-        }
-
-        // Faol stavkalarni boshqarish
-        function checkTrades() {
-            if(activeTrades.length > 0) {
-                let remainingTrades = [];
-                activeTrades.forEach(trade => {
-                    trade.timeLeft--;
-                    if(trade.timeLeft <= 0) {
-                        let isWin = (trade.type === 'LONG' && currentPrice > trade.entryPrice) || (trade.type === 'SHORT' && currentPrice < trade.entryPrice);
-                        if(isWin) {
-                            let profit = trade.amount * 1.8;
-                            balance += profit;
-                            tg.showAlert(`Tabriklaymiz! Stavkangiz yutdi +${profit.toFixed(2)} STAR`);
-                        } else {
-                            tg.showAlert(`Afsuski, stavkangiz yutqazdi (-${trade.amount} STAR)`);
-                        }
-                    } else {
-                        remainingTrades.push(trade);
-                    }
-                });
-                activeTrades = remainingTrades;
-                renderTradesList();
-                updateUI();
-            }
-        }
-
-        function renderTradesList() {
-            let activeContainer = document.getElementById('active-trades');
-            if(activeTrades.length === 0) {
-                activeContainer.innerHTML = `<div class="list-item" style="color: var(--text-secondary); justify-content: center;">Hozircha faol stavkalar yo'q</div>`;
-                return;
-            }
-
-            activeContainer.innerHTML = '';
-            activeTrades.forEach(trade => {
-                let isWin = (trade.type === 'LONG' && currentPrice >= trade.entryPrice) || (trade.type === 'SHORT' && currentPrice <= trade.entryPrice);
-                let item = document.createElement('div');
-                item.className = `list-item ${isWin ? 'item-green' : 'item-red'}`;
-                item.innerHTML = `
-                    <div>
-                        <b>${trade.type}</b> (${trade.amount} STAR)<br>
-                        <small style="color:var(--text-secondary)">Kirish: ${trade.entryPrice.toFixed(1)}</small>
-                    </div>
-                    <div>
-                        <span style="color:${isWin ? 'var(--green)' : 'var(--red)'}">${isWin ? 'Yutmoqda' : 'Yutqazmoqda'}</span><br>
-                        <small>Vaqt: ${trade.timeLeft}s</small>
-                    </div>
-                `;
-                activeContainer.appendChild(item);
-            });
-        }
-
-        updateUI();
-        renderChart();
-    </script>
 </body>
 </html>
