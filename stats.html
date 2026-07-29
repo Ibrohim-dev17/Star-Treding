@@ -1,31 +1,104 @@
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statistika va Diagrammalar</title>
-    <link rel="stylesheet" href="css/style.min.html">
     <!-- Chart.js Kutubxonasi -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            --glass-bg: rgba(255, 255, 255, 0.07);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --text-color: #f8fafc;
+            --primary: #6366f1;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background: var(--bg-gradient); color: var(--text-color); min-height: 100vh; padding: 16px; }
+        .container { max-width: 480px; margin: 0 auto; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .top-nav { display: flex; align-items: center; margin-bottom: 20px; }
+        .back-btn { color: var(--text-color); text-decoration: none; background: var(--glass-bg); padding: 8px 14px; border-radius: 8px; border: 1px solid var(--glass-border); margin-right: 15px; font-size: 14px; }
+        .filter-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+        .tab-btn { flex: 1; padding: 10px; background: var(--glass-bg); border: 1px solid var(--glass-border); color: white; border-radius: 10px; cursor: pointer; font-size: 13px; font-weight: 600; }
+        .tab-btn.active { background: var(--primary); border-color: var(--primary); }
+        .glass-card { background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 16px; padding: 20px; margin-bottom: 16px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); }
+    </style>
 </head>
 <body>
-    <div class="container animate-fade">
+    <div class="container">
         <div class="top-nav">
             <a href="index.html" class="back-btn">← Orqaga</a>
             <h2>Ish Vaqti Statistikasi 📊</h2>
         </div>
 
         <div class="filter-tabs">
-            <button class="tab-btn active" onclick="changeChart('daily')">Kunlik</button>
-            <button class="tab-btn" onclick="changeChart('weekly')">Haftalik</button>
-            <button class="tab-btn" onclick="changeChart('monthly')">Oylik</button>
-            <button class="tab-btn" onclick="changeChart('yearly')">Yillik</button>
+            <button class="tab-btn active" onclick="changeChart('daily', event)">Kunlik</button>
+            <button class="tab-btn" onclick="changeChart('weekly', event)">Haftalik</button>
+            <button class="tab-btn" onclick="changeChart('monthly', event)">Oylik</button>
+            <button class="tab-btn" onclick="changeChart('yearly', event)">Yillik</button>
         </div>
 
-        <div class="glass-card chart-card">
+        <div class="glass-card">
             <canvas id="workChart"></canvas>
         </div>
     </div>
-    <script src="js/charts.js"></script>
+
+    <script>
+        let myChart = null;
+
+        function renderChart(type) {
+            const ctx = document.getElementById('workChart').getContext('2d');
+            let labels = [];
+            let data = [];
+
+            if (type === 'daily') {
+                labels = ['Dush', 'Sesh', 'Chor', 'Pay', 'Juma (Dam)', 'Shan'];
+                data = [8, 8.5, 9, 8, 0, 6];
+            } else if (type === 'weekly') {
+                labels = ['1-Hafta', '2-Hafta', '3-Hafta', '4-Hafta'];
+                data = [45, 48, 42, 50];
+            } else if (type === 'monthly') {
+                labels = ['Yan', 'Fev', 'Mar', 'Apr', 'May', 'Iyun', 'Iyul'];
+                data = [180, 175, 190, 185, 170, 195, 180];
+            } else if (type === 'yearly') {
+                labels = ['2024', '2025', '2026'];
+                data = [2100, 2200, 1150];
+            }
+
+            if (myChart) { myChart.destroy(); }
+
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Ishlangan soatlar',
+                        data: data,
+                        backgroundColor: '#6366f1',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#fff' } },
+                        x: { grid: { display: false }, ticks: { color: '#fff' } }
+                    }
+                }
+            });
+        }
+
+        window.onload = () => { renderChart('daily'); };
+
+        function changeChart(type, event) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderChart(type);
+        }
+    </script>
 </body>
 </html>
