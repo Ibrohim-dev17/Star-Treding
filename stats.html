@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistika va Diagrammalar</title>
+    <link rel="stylesheet" href="css/style.min.html">
+    <!-- Chart.js Kutubxonasi -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container animate-fade">
+        <div class="top-nav">
+            <a href="index.html" class="back-btn">← Orqaga</a>
+            <h2>Ish Vaqti Statistikasi 📊</h2>
+        </div>
+
+        <div class="filter-tabs">
+            <button class="tab-btn active" onclick="changeChart('daily')">Kunlik</button>
+            <button class="tab-btn" onclick="changeChart('weekly')">Haftalik</button>
+            <button class="tab-btn" onclick="changeChart('monthly')">Oylik</button>
+            <button class="tab-btn" onclick="changeChart('yearly')">Yillik</button>
+        </div>
+
+        <div class="glass-card chart-card">
+            <canvas id="workChart"></canvas>
+        </div>
+    </div>
+    <script src="js/charts.js"></script>
+</body>
+</html>
