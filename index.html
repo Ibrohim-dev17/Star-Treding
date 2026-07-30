@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Italki TWA - Mukammal Asosiy Sahifa</title>
+    <title>Italki TWA - Asosiy Sahifa</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Telegram Web App SDK -->
@@ -41,21 +41,43 @@
                     <h1 id="username" class="text-xs font-bold tracking-tight text-gray-900">Alisher</h1>
                 </div>
             </div>
+            <!-- Shaxsiy kabinetga o'tish -->
             <a href="cabinet.html" onclick="hapticClick()" class="interactive flex items-center gap-1.5 bg-blue-50 text-blue-600 px-3.5 py-1.5 rounded-2xl text-xs font-bold shadow-sm hover:bg-blue-100">
                 <span>💎</span>
                 <span id="user-balance">120,000 so'm</span>
             </a>
         </div>
+
         <!-- Qidiruv paneli -->
         <div class="relative">
-            <input type="text" id="search-input" oninput="searchTeachers()" placeholder="Ustoz, fan yoki mavzuni qidiring..." 
+            <input type="text" id="search-input" oninput="searchTeachers()" placeholder="Ustoz nomi yoki fanni kiriting..." 
                 class="w-full bg-gray-100 border-none rounded-2xl px-4 py-3 pl-10 text-xs text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all">
             <span class="absolute left-3.5 top-3.5 text-gray-400 text-sm">🔍</span>
         </div>
     </header>
 
-    <!-- Yangiliklar / E'lonlar (Stories Banner) -->
-    <div class="px-4 mt-4">
+    <!-- Platforma statistikasi -->
+    <div class="px-4 mt-3">
+        <div class="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex justify-around text-center">
+            <div>
+                <p class="text-[10px] text-gray-400 font-medium">Faol Ustozlar</p>
+                <h4 class="text-xs font-bold text-gray-900 mt-0.5">140+</h4>
+            </div>
+            <div class="w-[1px] bg-gray-100"></div>
+            <div>
+                <p class="text-[10px] text-gray-400 font-medium">O'quvchilar</p>
+                <h4 class="text-xs font-bold text-gray-900 mt-0.5">1,250+</h4>
+            </div>
+            <div class="w-[1px] bg-gray-100"></div>
+            <div>
+                <p class="text-[10px] text-gray-400 font-medium">O'rtacha reyting</p>
+                <h4 class="text-xs font-bold text-amber-600 mt-0.5">⭐ 4.9</h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- Yangiliklar va Aksiya Banneri (Stories) -->
+    <div class="px-4 mt-3">
         <div class="flex gap-3 overflow-x-auto no-scrollbar pb-1">
             <div class="flex-shrink-0 w-64 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-4 text-white shadow-md relative overflow-hidden">
                 <div class="relative z-10">
@@ -82,13 +104,23 @@
         <button onclick="filterCategory(this, 'english')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100">Ingliz tili</button>
         <button onclick="filterCategory(this, 'ielts')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100">IELTS 7+</button>
         <button onclick="filterCategory(this, 'russian')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100">Rus tili</button>
-        <button onclick="filterCategory(this, 'it')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100">IT & Ingliz</button>
+        <button onclick="filterCategory(this, 'it')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100">IT & Dasturlash</button>
+    </div>
+
+    <!-- Saralash (Sorting Options) -->
+    <div class="px-4 mt-3 flex justify-between items-center text-xs text-gray-500">
+        <span class="font-bold text-gray-700">Tavsiya etilgan ustozlar</span>
+        <select onchange="sortTeachers(this.value)" class="bg-white border border-gray-200 rounded-xl px-3 py-1.5 text-xs font-semibold text-gray-700 focus:outline-none">
+            <option value="rating">⭐ Eng yuqori reyting</option>
+            <option value="price-low">💰 Arzonroq narx</option>
+            <option value="price-high">💎 Qimmatroq / Tajribali</option>
+        </select>
     </div>
 
     <!-- O'qituvchilar ro'yxati -->
-    <main class="px-4 mt-4 space-y-3" id="teachers-list">
+    <main class="px-4 mt-3 space-y-3" id="teachers-list">
         <!-- Kartochka 1 -->
-        <div class="teacher-card bg-white p-4 rounded-3xl shadow-sm border border-gray-100 flex gap-3.5 items-center hover:shadow-md transition-all" data-category="ielts english" data-name="madina karimova">
+        <div class="teacher-card bg-white p-4 rounded-3xl shadow-sm border border-gray-100 flex gap-3.5 items-center hover:shadow-md transition-all" data-category="ielts english" data-name="madina karimova" data-rating="4.9" data-price="80000">
             <div class="relative">
                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Teacher" class="w-16 h-16 rounded-2xl object-cover shadow-sm">
                 <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white"></span>
@@ -105,15 +137,17 @@
                         <span class="text-[10px] text-gray-400">/soat</span>
                     </div>
                     <div class="flex gap-1.5">
-                        <a href="chat.html" onclick="hapticClick()" class="interactive bg-gray-100 hover:bg-gray-200 text-gray-700 text-[11px] p-2 rounded-xl font-bold">💬</a>
-                        <a href="teacher.html" onclick="hapticClick()" class="interactive bg-blue-600 hover:bg-blue-700 text-white text-[11px] px-3.5 py-2 rounded-xl font-bold shadow-sm shadow-blue-500/20">Band qilish</a>
+                        <!-- Alohida chat.html sahifasiga o'tish -->
+                        <a href="chat.html" onclick="hapticClick()" class="interactive bg-gray-100 hover:bg-gray-200 text-gray-700 text-[11px] p-2.5 rounded-xl font-bold">💬</a>
+                        <!-- Alohida teacher.html sahifasiga o'tish -->
+                        <a href="teacher.html" onclick="hapticClick()" class="interactive bg-blue-600 hover:bg-blue-700 text-white text-[11px] px-3.5 py-2.5 rounded-xl font-bold shadow-sm shadow-blue-500/20">Band qilish</a>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Kartochka 2 -->
-        <div class="teacher-card bg-white p-4 rounded-3xl shadow-sm border border-gray-100 flex gap-3.5 items-center hover:shadow-md transition-all" data-category="english" data-name="jasur rahimov">
+        <div class="teacher-card bg-white p-4 rounded-3xl shadow-sm border border-gray-100 flex gap-3.5 items-center hover:shadow-md transition-all" data-category="english" data-name="jasur rahimov" data-rating="4.8" data-price="60000">
             <div class="relative">
                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" alt="Teacher" class="w-16 h-16 rounded-2xl object-cover shadow-sm">
                 <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white"></span>
@@ -130,8 +164,8 @@
                         <span class="text-[10px] text-gray-400">/soat</span>
                     </div>
                     <div class="flex gap-1.5">
-                        <a href="chat.html" onclick="hapticClick()" class="interactive bg-gray-100 hover:bg-gray-200 text-gray-700 text-[11px] p-2 rounded-xl font-bold">💬</a>
-                        <a href="teacher.html" onclick="hapticClick()" class="interactive bg-blue-600 hover:bg-blue-700 text-white text-[11px] px-3.5 py-2 rounded-xl font-bold shadow-sm shadow-blue-500/20">Band qilish</a>
+                        <a href="chat.html" onclick="hapticClick()" class="interactive bg-gray-100 hover:bg-gray-200 text-gray-700 text-[11px] p-2.5 rounded-xl font-bold">💬</a>
+                        <a href="teacher.html" onclick="hapticClick()" class="interactive bg-blue-600 hover:bg-blue-700 text-white text-[11px] px-3.5 py-2.5 rounded-xl font-bold shadow-sm shadow-blue-500/20">Band qilish</a>
                     </div>
                 </div>
             </div>
@@ -198,6 +232,25 @@
                     card.style.display = 'none';
                 }
             });
+        }
+
+        // Saralash funksiyasi
+        function sortTeachers(criteria) {
+            if (tg.HapticFeedback) tg.HapticFeedback.selectionChanged();
+            const list = document.getElementById('teachers-list');
+            const cards = Array.from(list.querySelectorAll('.teacher-card'));
+
+            cards.sort((a, b) => {
+                if (criteria === 'rating') {
+                    return parseFloat(b.getAttribute('data-rating')) - parseFloat(a.getAttribute('data-rating'));
+                } else if (criteria === 'price-low') {
+                    return parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price'));
+                } else if (criteria === 'price-high') {
+                    return parseInt(b.getAttribute('data-price')) - parseInt(a.getAttribute('data-price'));
+                }
+            });
+
+            cards.forEach(card => list.appendChild(card));
         }
     </script>
 </body>
