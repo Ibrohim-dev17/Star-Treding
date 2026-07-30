@@ -50,15 +50,16 @@
         </div>
     </header>
 
-    <!-- Salomlashish va Balans -->
+    <!-- Balans va Foydalanuvchi -->
     <div class="px-4 mt-4 flex justify-between items-center">
         <div>
-            <p class="text-[11px] text-gray-400 font-medium">Xush kelibsiz</p>
-            <h1 id="username" class="text-xl font-bold tracking-tight text-gray-900">Alisher</h1>
+            <h1 id="username" class="text-xl font-bold tracking-tight text-gray-900">Jackson</h1>
             <p class="text-[11px] text-gray-500 mt-0.5">Bugun nimani o'rganamiz?</p>
         </div>
         <a href="cabinet.html" onclick="hapticClick()" class="interactive flex items-center gap-2 bg-slate-50 border border-slate-100 px-3 py-2 rounded-2xl shadow-sm">
-            <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            <div class="w-7 h-7 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+            </div>
             <div class="text-left">
                 <p class="text-[11px] font-bold text-gray-900">120,000 so'm</p>
             </div>
@@ -66,20 +67,17 @@
         </a>
     </div>
 
-    <!-- Qidiruv paneli -->
+    <!-- Qidiruv paneli (Mikrofonsiz) -->
     <div class="px-4 mt-3">
         <div class="relative flex items-center">
             <input type="text" id="search-input" placeholder="Ustoz, fan yoki mavzu qidiring..." 
-                class="w-full bg-slate-100/80 border-none rounded-2xl px-4 py-3 pl-10 pr-20 text-xs text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/30 transition-all">
+                class="w-full bg-slate-100/80 border-none rounded-2xl px-4 py-3 pl-10 pr-12 text-xs text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/30 transition-all">
             <span class="absolute left-3.5 text-gray-400">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </span>
             <div class="absolute right-3 flex items-center gap-1.5 text-gray-400">
                 <button class="p-1.5 hover:text-blue-600 transition">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </button>
-                <button class="bg-indigo-600 text-white p-2 rounded-xl text-xs hover:bg-indigo-700 transition">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
                 </button>
             </div>
         </div>
@@ -95,9 +93,6 @@
                     <p class="text-[11px] opacity-90 mt-0.5 leading-relaxed">Istalgan ustoz bilan sinov darsini yarim narxda o'ting.</p>
                     <button class="mt-3 bg-white text-blue-600 text-[11px] font-bold px-4 py-1.5 rounded-xl shadow">Batafsil</button>
                 </div>
-                <div class="absolute -right-4 -bottom-4 text-7xl opacity-20">
-                    <svg class="w-24 h-24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-                </div>
             </div>
             <div class="flex-shrink-0 w-[280px] bg-gradient-to-r from-emerald-600 to-teal-700 rounded-3xl p-4 text-white shadow-lg relative overflow-hidden">
                 <div class="relative z-10">
@@ -106,14 +101,11 @@
                     <p class="text-[11px] opacity-90 mt-0.5 leading-relaxed">Har bir do'stingizga 10,000 so'm bonus bering.</p>
                     <button class="mt-3 bg-white text-emerald-700 text-[11px] font-bold px-4 py-1.5 rounded-xl shadow">Batafsil</button>
                 </div>
-                <div class="absolute -right-4 -bottom-4 text-7xl opacity-20">
-                    <svg class="w-24 h-24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- Kategoriyalar (Bitta qatorda horizontal scroll) -->
+    <!-- Kategoriyalar -->
     <div class="px-4 mt-4">
         <div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar pb-1">
             <div class="flex-shrink-0 flex flex-col items-center">
@@ -145,12 +137,6 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                 </div>
                 <span class="text-[11px] font-semibold text-gray-700 mt-1">IT & Dasturlash</span>
-            </div>
-            <div class="flex-shrink-0 flex flex-col items-center">
-                <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-600 flex items-center justify-center shadow-sm">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
-                </div>
-                <span class="text-[11px] font-semibold text-gray-700 mt-1">Ko'proq</span>
             </div>
         </div>
     </div>
@@ -196,7 +182,7 @@
                 </div>
                 <div class="text-right">
                     <p class="text-xs font-bold text-indigo-600">17:00</p>
-                    <p class="text-[9px] text-gray-400">Bugun, 15 May</p>
+                    <p class="text-[9px] text-gray-400">Bugun</p>
                 </div>
             </div>
             <div class="mt-3 pt-3 border-t border-slate-100 flex justify-between items-center">
@@ -205,10 +191,10 @@
         </div>
     </div>
 
-    <!-- AI tavsiyalari -->
+    <!-- EduPrime tavsiya qiladi (Kengaytirilgan) -->
     <div class="mt-5">
         <div class="px-4 flex justify-between items-center mb-2.5">
-            <h3 class="text-xs font-bold text-gray-900">AI siz uchun tavsiya qildi</h3>
+            <h3 class="text-xs font-bold text-gray-900">EduPrime tavsiya qiladi</h3>
             <a href="#" class="text-[11px] font-bold text-indigo-600">Barchasini ko'rish &gt;</a>
         </div>
         <div class="flex gap-3 px-4 overflow-x-auto no-scrollbar">
@@ -219,7 +205,7 @@
                 <div class="flex items-center gap-2.5">
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" class="w-10 h-10 rounded-xl object-cover">
                     <div>
-                        <h4 class="text-[11px] font-bold text-gray-900 flex items-center gap-1">Jasur Rahimov</h4>
+                        <h4 class="text-[11px] font-bold text-gray-900">Jasur Rahimov</h4>
                         <p class="text-[10px] text-amber-500 font-semibold">4.8 <span class="text-gray-400 font-normal">(52)</span></p>
                     </div>
                 </div>
@@ -235,7 +221,7 @@
                 <div class="flex items-center gap-2.5">
                     <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100" class="w-10 h-10 rounded-xl object-cover">
                     <div>
-                        <h4 class="text-[11px] font-bold text-gray-900 flex items-center gap-1">Malika Abduazizova</h4>
+                        <h4 class="text-[11px] font-bold text-gray-900">Malika Abduazizova</h4>
                         <p class="text-[10px] text-amber-500 font-semibold">4.9 <span class="text-gray-400 font-normal">(84)</span></p>
                     </div>
                 </div>
@@ -244,10 +230,26 @@
                     <span class="text-[11px] font-bold text-indigo-600">80,000 so'm<span class="text-[9px] text-gray-400 font-normal">/soat</span></span>
                 </div>
             </div>
+            <div class="flex-shrink-0 w-[200px] bg-white p-3 rounded-2xl border border-slate-100 shadow-sm relative">
+                <button class="absolute top-3 right-3 text-rose-500 hover:scale-110 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                </button>
+                <div class="flex items-center gap-2.5">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100" class="w-10 h-10 rounded-xl object-cover">
+                    <div>
+                        <h4 class="text-[11px] font-bold text-gray-900">Azizbek Tursunov</h4>
+                        <p class="text-[10px] text-amber-500 font-semibold">4.7 <span class="text-gray-400 font-normal">(39)</span></p>
+                    </div>
+                </div>
+                <p class="text-[10px] text-gray-500 mt-2">Matematika</p>
+                <div class="mt-2 pt-2 border-t border-slate-50 flex justify-between items-center">
+                    <span class="text-[11px] font-bold text-indigo-600">70,000 so'm<span class="text-[9px] text-gray-400 font-normal">/soat</span></span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Top ustozlar -->
+    <!-- Top ustozlar (Ko'paytirilgan) -->
     <div class="mt-5 px-4">
         <div class="flex justify-between items-center mb-3">
             <h3 class="text-xs font-bold text-gray-900">Top ustozlar</h3>
@@ -277,10 +279,34 @@
                     <a href="teacher.html" class="interactive bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] px-4 py-2 rounded-xl font-bold shadow-sm shadow-indigo-500/20">Band qilish</a>
                 </div>
             </div>
+
+            <div class="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
+                <div class="flex items-center gap-3.5">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" class="w-16 h-16 rounded-2xl object-cover shadow-sm">
+                        <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white"></span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-bold text-xs text-gray-900">Jasur Rahimov</h3>
+                            <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-lg">4.8 <span class="text-gray-400 font-normal">(52)</span></span>
+                        </div>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Senior English Mentor</p>
+                        <p class="text-[10px] text-gray-400 mt-0.5">4 yil tajriba • 310 o'quvchi</p>
+                    </div>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-100 flex justify-between items-center">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600">60,000 so'm</span>
+                        <span class="text-[10px] text-gray-400">/soat</span>
+                    </div>
+                    <a href="teacher.html" class="interactive bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] px-4 py-2 rounded-xl font-bold shadow-sm shadow-indigo-500/20">Band qilish</a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Mashhur kurslar -->
+    <!-- Mashhur kurslar (Ko'paytirilgan) -->
     <div class="mt-5">
         <div class="px-4 flex justify-between items-center mb-2.5">
             <h3 class="text-xs font-bold text-gray-900">Mashhur kurslar</h3>
@@ -296,6 +322,16 @@
                 <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xs mb-2">ENG</div>
                 <h4 class="text-[11px] font-bold text-gray-900 leading-snug">Ingliz tili Umumiy kurs</h4>
                 <p class="text-[10px] text-gray-400 mt-1">96 ta dars</p>
+            </div>
+            <div class="flex-shrink-0 w-[140px] bg-white p-3 rounded-2xl border border-slate-100 shadow-sm">
+                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs mb-2">MATH</div>
+                <h4 class="text-[11px] font-bold text-gray-900 leading-snug">Oliy Matematika</h4>
+                <p class="text-[10px] text-gray-400 mt-1">64 ta dars</p>
+            </div>
+            <div class="flex-shrink-0 w-[140px] bg-white p-3 rounded-2xl border border-slate-100 shadow-sm">
+                <div class="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center font-bold text-xs mb-2">IT</div>
+                <h4 class="text-[11px] font-bold text-gray-900 leading-snug">Frontend Asoslari</h4>
+                <p class="text-[10px] text-gray-400 mt-1">80 ta dars</p>
             </div>
         </div>
     </div>
@@ -324,39 +360,25 @@
         </div>
     </div>
 
-    <!-- Pastdagi Banner -->
-    <div class="px-4 mt-5">
-        <div class="bg-gradient-to-r from-indigo-700 to-purple-800 p-4 rounded-3xl text-white shadow-lg relative overflow-hidden flex justify-between items-center">
-            <div class="relative z-10 max-w-[60%]">
-                <h4 class="font-bold text-xs">Ustozmisiz?</h4>
-                <p class="text-[10px] opacity-90 mt-1 leading-relaxed">Bilimingizni boshqalar bilan baham ko'ring va daromad qiling!</p>
-                <button class="mt-3 bg-white text-indigo-900 text-[11px] font-bold px-3.5 py-1.5 rounded-xl shadow">Ustoz bo'lish</button>
-            </div>
-            <div class="relative z-10">
-                <svg class="w-16 h-16 opacity-30" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-        </div>
-    </div>
-
-    <!-- Floating AI Bot Button -->
+    <!-- Floating AI Bot Button (Zamonaviy Robot SVG bilan) -->
     <div class="fixed right-4 bottom-20 z-50">
         <button class="w-12 h-12 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-lg flex items-center justify-center interactive">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6m-6 3h6"></path></svg>
         </button>
     </div>
 
-    <!-- Professional Pastki Navigatsiya -->
+    <!-- Professional Pastki Navigatsiya (Ustozlar va yangi zamonaviy SVG'lar bilan) -->
     <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 px-4 py-2.5 flex justify-around items-center z-50 shadow-lg">
         <a href="index.html" class="interactive flex flex-col items-center text-indigo-600">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
             <span class="text-[10px] font-bold mt-0.5">Asosiy</span>
         </a>
-        <a href="#" class="interactive flex flex-col items-center text-gray-400 hover:text-gray-600">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            <span class="text-[10px] font-medium mt-0.5">Qidiruv</span>
+        <a href="teachers.html" class="interactive flex flex-col items-center text-gray-400 hover:text-gray-600">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            <span class="text-[10px] font-medium mt-0.5">Ustozlar</span>
         </a>
-        <a href="#" class="interactive flex flex-col items-center text-gray-400 hover:text-gray-600">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+        <a href="lessons.html" class="interactive flex flex-col items-center text-gray-400 hover:text-gray-600">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
             <span class="text-[10px] font-medium mt-0.5">Darslarim</span>
         </a>
         <a href="chat.html" class="interactive flex flex-col items-center text-gray-400 hover:text-gray-600">
