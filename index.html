@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Italki TWA - Asosiy Sahifa</title>
+    <title>EduPrime - Asosiy Sahifa</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Telegram Web App SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
-            background-color: var(--tg-theme-bg-color, #F4F6F9);
-            color: var(--tg-theme-text-color, #0F172A);
+            background-color: #F8FAFC;
+            color: #0F172A;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
         .interactive {
@@ -29,158 +29,384 @@
         }
     </style>
 </head>
-<body class="min-h-screen pb-28">
+<body class="min-h-screen pb-32">
 
     <!-- Header / Yuqori qism -->
-    <header class="p-4 bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <div class="flex justify-between items-center mb-3">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-2xl bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm shadow-inner" id="user-avatar-icon">A</div>
-                <div>
-                    <p class="text-[10px] text-gray-400 font-medium">Xush kelibsiz 👋</p>
-                    <h1 id="username" class="text-xs font-bold tracking-tight text-gray-900">Alisher</h1>
-                </div>
+    <header class="p-4 bg-white shadow-sm sticky top-0 z-50 flex justify-between items-center">
+        <div class="flex items-center gap-2.5">
+            <button class="text-gray-700 text-xl">☰</button>
+            <div class="flex items-center gap-1.5 font-bold text-lg text-indigo-600">
+                <span>🎓 EduPrime</span>
             </div>
-            <!-- Shaxsiy kabinetga o'tish -->
-            <a href="cabinet.html" onclick="hapticClick()" class="interactive flex items-center gap-1.5 bg-blue-50 text-blue-600 px-3.5 py-1.5 rounded-2xl text-xs font-bold shadow-sm hover:bg-blue-100">
-                <span>💎</span>
-                <span id="user-balance">120,000 so'm</span>
-            </a>
         </div>
-
-        <!-- Qidiruv paneli -->
-        <div class="relative">
-            <input type="text" id="search-input" oninput="searchTeachers()" placeholder="Ustoz nomi yoki fanni kiriting..." 
-                class="w-full bg-gray-100 border-none rounded-2xl px-4 py-3 pl-10 text-xs text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all">
-            <span class="absolute left-3.5 top-3.5 text-gray-400 text-sm">🔍</span>
+        <div class="flex items-center gap-3">
+            <button class="relative text-gray-600 text-lg">
+                🔔 <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">3</span>
+            </button>
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="Profile" class="w-9 h-9 rounded-full object-cover border border-gray-200">
         </div>
     </header>
 
-    <!-- Platforma statistikasi -->
+    <!-- Salomlashish va Balans -->
+    <div class="px-4 mt-4 flex justify-between items-center">
+        <div>
+            <p class="text-[11px] text-gray-400 font-medium">Xush kelibsiz 👋</p>
+            <h1 id="username" class="text-xl font-bold tracking-tight text-gray-900">Alisher</h1>
+            <p class="text-[11px] text-gray-500 mt-0.5">Bugun nimani o'rganamiz?</p>
+        </div>
+        <a href="cabinet.html" onclick="hapticClick()" class="interactive flex items-center gap-2 bg-slate-50 border border-slate-100 px-3 py-2 rounded-2xl shadow-sm">
+            <span class="text-blue-500 text-sm">💎</span>
+            <div class="text-left">
+                <p class="text-[11px] font-bold text-gray-900">120,000 so'm</p>
+            </div>
+            <span class="bg-blue-600 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold">+</span>
+        </a>
+    </div>
+
+    <!-- Qidiruv paneli -->
     <div class="px-4 mt-3">
-        <div class="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex justify-around text-center">
-            <div>
-                <p class="text-[10px] text-gray-400 font-medium">Faol Ustozlar</p>
-                <h4 class="text-xs font-bold text-gray-900 mt-0.5">140+</h4>
-            </div>
-            <div class="w-[1px] bg-gray-100"></div>
-            <div>
-                <p class="text-[10px] text-gray-400 font-medium">O'quvchilar</p>
-                <h4 class="text-xs font-bold text-gray-900 mt-0.5">1,250+</h4>
-            </div>
-            <div class="w-[1px] bg-gray-100"></div>
-            <div>
-                <p class="text-[10px] text-gray-400 font-medium">O'rtacha reyting</p>
-                <h4 class="text-xs font-bold text-amber-600 mt-0.5">⭐ 4.9</h4>
+        <div class="relative flex items-center">
+            <input type="text" id="search-input" placeholder="Ustoz, fan yoki mavzu qidiring..." 
+                class="w-full bg-slate-100/80 border-none rounded-2xl px-4 py-3 pl-10 pr-20 text-xs text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/30 transition-all">
+            <span class="absolute left-3.5 text-gray-400 text-sm">🔍</span>
+            <div class="absolute right-3 flex items-center gap-2 text-gray-400">
+                <button class="hover:text-blue-600">⚙️</button>
+                <button class="bg-indigo-600 text-white p-2 rounded-xl text-xs">🎙️</button>
             </div>
         </div>
     </div>
 
-    <!-- Yangiliklar va Aksiya Banneri (Stories) -->
-    <div class="px-4 mt-3">
+    <!-- Banner (Aksiya va Bonuslar) -->
+    <div class="px-4 mt-4">
         <div class="flex gap-3 overflow-x-auto no-scrollbar pb-1">
-            <div class="flex-shrink-0 w-64 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-4 text-white shadow-md relative overflow-hidden">
+            <div class="flex-shrink-0 w-[280px] bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-3xl p-4 text-white shadow-lg relative overflow-hidden">
                 <div class="relative z-10">
                     <span class="bg-white/20 text-[10px] px-2 py-0.5 rounded-lg font-bold">🔥 Aksiya</span>
-                    <h4 class="font-bold text-xs mt-2">1-dars 50% chegirma!</h4>
-                    <p class="text-[10px] opacity-90 mt-0.5">Istalgan ustoz bilan sinov darsini yarim narxda o'ting.</p>
+                    <h4 class="font-bold text-sm mt-2">1-dars 50% chegirma!</h4>
+                    <p class="text-[11px] opacity-90 mt-0.5 leading-relaxed">Istalgan ustoz bilan sinov darsini yarim narxda o'ting.</p>
+                    <button class="mt-3 bg-white text-blue-600 text-[11px] font-bold px-4 py-1.5 rounded-xl shadow">Batafsil</button>
                 </div>
-                <div class="absolute -right-4 -bottom-4 text-6xl opacity-15">🚀</div>
+                <div class="absolute -right-4 -bottom-4 text-7xl opacity-20">🎁</div>
             </div>
-            <div class="flex-shrink-0 w-64 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-3xl p-4 text-white shadow-md relative overflow-hidden">
+            <div class="flex-shrink-0 w-[280px] bg-gradient-to-r from-emerald-600 to-teal-700 rounded-3xl p-4 text-white shadow-lg relative overflow-hidden">
                 <div class="relative z-10">
-                    <span class="bg-white/20 text-[10px] px-2 py-0.5 rounded-lg font-bold">💡 Bepul</span>
-                    <h4 class="font-bold text-xs mt-2">So'zlashuv klubi</h4>
-                    <p class="text-[10px] opacity-90 mt-0.5">Har shanba chet ellik ustozlar bilan muloqot qiling.</p>
+                    <span class="bg-white/20 text-[10px] px-2 py-0.5 rounded-lg font-bold">🎁 Bonus</span>
+                    <h4 class="font-bold text-sm mt-2">Do'stingiz olib bonus oling</h4>
+                    <p class="text-[11px] opacity-90 mt-0.5 leading-relaxed">Har bir do'stingizga 10,000 so'm bonus bering.</p>
+                    <button class="mt-3 bg-white text-emerald-700 text-[11px] font-bold px-4 py-1.5 rounded-xl shadow">Batafsil</button>
                 </div>
-                <div class="absolute -right-4 -bottom-4 text-6xl opacity-15">🌍</div>
+                <div class="absolute -right-4 -bottom-4 text-7xl opacity-20">👥</div>
             </div>
         </div>
     </div>
 
-    <!-- Kategoriyalar filtri -->
-    <div class="flex gap-2 px-4 mt-3 overflow-x-auto no-scrollbar">
-        <button onclick="filterCategory(this, 'all')" class="cat-btn interactive bg-blue-600 text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow-sm shadow-blue-500/20">Barchasi</button>
-        <button onclick="filterCategory(this, 'english')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100">Ingliz tili</button>
-        <button onclick="filterCategory(this, 'ielts')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100">IELTS 7+</button>
-        <button onclick="filterCategory(this, 'russian')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100">Rus tili</button>
-        <button onclick="filterCategory(this, 'it')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100">IT & Dasturlash</button>
-    </div>
-
-    <!-- Saralash (Sorting Options) -->
-    <div class="px-4 mt-3 flex justify-between items-center text-xs text-gray-500">
-        <span class="font-bold text-gray-700">Tavsiya etilgan ustozlar</span>
-        <select onchange="sortTeachers(this.value)" class="bg-white border border-gray-200 rounded-xl px-3 py-1.5 text-xs font-semibold text-gray-700 focus:outline-none">
-            <option value="rating">⭐ Eng yuqori reyting</option>
-            <option value="price-low">💰 Arzonroq narx</option>
-            <option value="price-high">💎 Qimmatroq / Tajribali</option>
-        </select>
-    </div>
-
-    <!-- O'qituvchilar ro'yxati -->
-    <main class="px-4 mt-3 space-y-3" id="teachers-list">
-        <!-- Kartochka 1 -->
-        <div class="teacher-card bg-white p-4 rounded-3xl shadow-sm border border-gray-100 flex gap-3.5 items-center hover:shadow-md transition-all" data-category="ielts english" data-name="madina karimova" data-rating="4.9" data-price="80000">
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Teacher" class="w-16 h-16 rounded-2xl object-cover shadow-sm">
-                <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white"></span>
+    <!-- Kategoriyalar (Ikonkalar) -->
+    <div class="px-4 mt-4">
+        <div class="grid grid-cols-4 gap-3 text-center">
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg shadow-sm">🟣</div>
+                <span class="text-[11px] font-semibold text-gray-700 mt-1">Barchasi</span>
             </div>
-            <div class="flex-1">
-                <div class="flex justify-between items-start">
-                    <h3 class="font-bold text-xs text-gray-900">Madina Karimova</h3>
-                    <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-lg flex items-center gap-0.5">⭐ 4.9 <span class="text-gray-400 font-normal">(84)</span></span>
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center font-bold text-xs shadow-sm">IELTS</div>
+                <span class="text-[11px] font-semibold text-gray-700 mt-1">IELTS</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xs shadow-sm">A</div>
+                <span class="text-[11px] font-semibold text-gray-700 mt-1">Ingliz tili</span>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center text-lg shadow-sm">🇷🇺</div>
+                <span class="text-[11px] font-semibold text-gray-700 mt-1">Rus tili</span>
+            </div>
+            <div class="flex flex-col items-center mt-2">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg shadow-sm">√x</div>
+                <span class="text-[11px] font-semibold text-gray-700 mt-1">Matematika</span>
+            </div>
+            <div class="flex flex-col items-center mt-2">
+                <div class="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-lg shadow-sm">&lt;/&gt;</div>
+                <span class="text-[11px] font-semibold text-gray-700 mt-1">IT & Dasturlash</span>
+            </div>
+            <div class="flex flex-col items-center mt-2">
+                <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-600 flex items-center justify-center text-lg shadow-sm">☷</div>
+                <span class="text-[11px] font-semibold text-gray-700 mt-1">Ko'proq</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tezkor menyu bloklari (Darslarim, Saqlangan va hokazo) -->
+    <div class="px-4 mt-4">
+        <div class="grid grid-cols-2 gap-3">
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg">📅</div>
+                <div>
+                    <h4 class="text-xs font-bold text-gray-900">Darslarim</h4>
+                    <p class="text-[10px] text-gray-400 mt-0.5">8 ta dars kutmoqda</p>
                 </div>
-                <p class="text-[11px] text-gray-500 mt-0.5 font-medium">IELTS 8.5 / Native Speaker</p>
-                <div class="flex justify-between items-center mt-3">
+            </div>
+            <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center text-lg">❤️</div>
+                <div>
+                    <h4 class="text-xs font-bold text-gray-900">Saqlangan</h4>
+                    <p class="text-[10px] text-gray-400 mt-0.5">12 ta ustoz saqlangan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bugungi darsingiz -->
+    <div class="px-4 mt-4">
+        <div class="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-[11px] font-bold text-gray-500">Bugungi darsingiz</span>
+                <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-lg flex items-center gap-1">🟢 Online dars</span>
+            </div>
+            <div class="flex items-center justify-between mt-3">
+                <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" class="w-12 h-12 rounded-2xl object-cover shadow-sm">
                     <div>
-                        <span class="text-xs font-bold text-blue-600">80,000 so'm</span>
+                        <h4 class="text-xs font-bold text-gray-900">Madina Karimova</h4>
+                        <p class="text-[10px] text-gray-500 mt-0.5">IELTS Speaking</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs font-bold text-indigo-600">17:00</p>
+                    <p class="text-[9px] text-gray-400">Bugun, 15 May</p>
+                </div>
+            </div>
+            <div class="mt-3 pt-3 border-t border-slate-100 flex justify-between items-center">
+                <a href="chat.html" class="interactive w-full bg-indigo-600 hover:bg-indigo-700 text-white text-center py-2.5 rounded-xl text-xs font-bold shadow-sm shadow-indigo-500/20">Darsga kirish</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Al siz uchun tavsiya qildi (Horizontally scrollable mini cards) -->
+    <div class="mt-5">
+        <div class="px-4 flex justify-between items-center mb-2.5">
+            <h3 class="text-xs font-bold text-gray-900">✨ AI siz uchun tavsiya qildi</h3>
+            <a href="#" class="text-[11px] font-bold text-indigo-600">Barchasini ko'rish &gt;</a>
+        </div>
+        <div class="flex gap-3 px-4 overflow-x-auto no-scrollbar">
+            <!-- Mini Card 1 -->
+            <div class="flex-shrink-0 w-[200px] bg-white p-3 rounded-2xl border border-slate-100 shadow-sm relative">
+                <button class="absolute top-3 right-3 text-rose-500 text-xs">❤️</button>
+                <div class="flex items-center gap-2.5">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" class="w-10 h-10 rounded-xl object-cover">
+                    <div>
+                        <h4 class="text-[11px] font-bold text-gray-900 flex items-center gap-1">Jasur Rahimov <span class="text-blue-500 text-[10px]">✔</span></h4>
+                        <p class="text-[10px] text-amber-500 font-semibold">⭐ 4.8 <span class="text-gray-400 font-normal">(52)</span></p>
+                    </div>
+                </div>
+                <p class="text-[10px] text-gray-500 mt-2">Ingliz tili</p>
+                <div class="mt-2 pt-2 border-t border-slate-50 flex justify-between items-center">
+                    <span class="text-[11px] font-bold text-indigo-600">60,000 so'm<span class="text-[9px] text-gray-400 font-normal">/soat</span></span>
+                </div>
+            </div>
+            <!-- Mini Card 2 -->
+            <div class="flex-shrink-0 w-[200px] bg-white p-3 rounded-2xl border border-slate-100 shadow-sm relative">
+                <button class="absolute top-3 right-3 text-rose-500 text-xs">❤️</button>
+                <div class="flex items-center gap-2.5">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100" class="w-10 h-10 rounded-xl object-cover">
+                    <div>
+                        <h4 class="text-[11px] font-bold text-gray-900 flex items-center gap-1">Malika Abduazizova <span class="text-blue-500 text-[10px]">✔</span></h4>
+                        <p class="text-[10px] text-amber-500 font-semibold">⭐ 4.9 <span class="text-gray-400 font-normal">(84)</span></p>
+                    </div>
+                </div>
+                <p class="text-[10px] text-gray-500 mt-2">IELTS 8.0+</p>
+                <div class="mt-2 pt-2 border-t border-slate-50 flex justify-between items-center">
+                    <span class="text-[11px] font-bold text-indigo-600">80,000 so'm<span class="text-[9px] text-gray-400 font-normal">/soat</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top ustozlar -->
+    <div class="mt-5 px-4">
+        <div class="flex justify-between items-center mb-3">
+            <h3 class="text-xs font-bold text-gray-900">Top ustozlar ⭐</h3>
+            <a href="#" class="text-[11px] font-bold text-indigo-600">Barchasini ko'rish &gt;</a>
+        </div>
+        <div class="space-y-3">
+            <!-- Teacher Card 1 -->
+            <div class="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
+                <div class="flex items-center gap-3.5">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-16 h-16 rounded-2xl object-cover shadow-sm">
+                        <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white"></span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-bold text-xs text-gray-900 flex items-center gap-1">Madina Karimova <span class="text-blue-500 text-[10px]">✔</span></h3>
+                            <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-lg">⭐ 4.9 <span class="text-gray-400 font-normal">(84)</span></span>
+                        </div>
+                        <p class="text-[11px] text-gray-500 mt-0.5">IELTS 8.5 / Native Speaker</p>
+                        <p class="text-[10px] text-gray-400 mt-0.5">5 yil tajriba • 523 o'quvchi</p>
+                    </div>
+                </div>
+                <div class="mt-3 pt-3 border-t border-slate-100 flex justify-between items-center">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600">80,000 so'm</span>
                         <span class="text-[10px] text-gray-400">/soat</span>
                     </div>
-                    <div class="flex gap-1.5">
-                        <!-- Alohida chat.html sahifasiga o'tish -->
-                        <a href="chat.html" onclick="hapticClick()" class="interactive bg-gray-100 hover:bg-gray-200 text-gray-700 text-[11px] p-2.5 rounded-xl font-bold">💬</a>
-                        <!-- Alohida teacher.html sahifasiga o'tish -->
-                        <a href="teacher.html" onclick="hapticClick()" class="interactive bg-blue-600 hover:bg-blue-700 text-white text-[11px] px-3.5 py-2.5 rounded-xl font-bold shadow-sm shadow-blue-500/20">Band qilish</a>
+                    <a href="teacher.html" class="interactive bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] px-4 py-2 rounded-xl font-bold shadow-sm shadow-indigo-500/20">Band qilish</a>
+                </div>
+            </div>
+            <!-- Teacher Card 2 -->
+            <div class="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
+                <div class="flex items-center gap-3.5">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" class="w-16 h-16 rounded-2xl object-cover shadow-sm">
+                        <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white"></span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-bold text-xs text-gray-900 flex items-center gap-1">Jasur Rahimov <span class="text-blue-500 text-[10px]">✔</span></h3>
+                            <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-lg">⭐ 4.8 <span class="text-gray-400 font-normal">(52)</span></span>
+                        </div>
+                        <p class="text-[11px] text-gray-500 mt-0.5">General English & Grammar</p>
+                        <p class="text-[10px] text-gray-400 mt-0.5">3 yil tajriba • 322 o'quvchi</p>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Kartochka 2 -->
-        <div class="teacher-card bg-white p-4 rounded-3xl shadow-sm border border-gray-100 flex gap-3.5 items-center hover:shadow-md transition-all" data-category="english" data-name="jasur rahimov" data-rating="4.8" data-price="60000">
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" alt="Teacher" class="w-16 h-16 rounded-2xl object-cover shadow-sm">
-                <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white"></span>
-            </div>
-            <div class="flex-1">
-                <div class="flex justify-between items-start">
-                    <h3 class="font-bold text-xs text-gray-900">Jasur Rahimov</h3>
-                    <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-lg flex items-center gap-0.5">⭐ 4.8 <span class="text-gray-400 font-normal">(52)</span></span>
-                </div>
-                <p class="text-[11px] text-gray-500 mt-0.5 font-medium">General English & Grammar</p>
-                <div class="flex justify-between items-center mt-3">
+                <div class="mt-3 pt-3 border-t border-slate-100 flex justify-between items-center">
                     <div>
-                        <span class="text-xs font-bold text-blue-600">60,000 so'm</span>
+                        <span class="text-xs font-bold text-indigo-600">60,000 so'm</span>
                         <span class="text-[10px] text-gray-400">/soat</span>
                     </div>
-                    <div class="flex gap-1.5">
-                        <a href="chat.html" onclick="hapticClick()" class="interactive bg-gray-100 hover:bg-gray-200 text-gray-700 text-[11px] p-2.5 rounded-xl font-bold">💬</a>
-                        <a href="teacher.html" onclick="hapticClick()" class="interactive bg-blue-600 hover:bg-blue-700 text-white text-[11px] px-3.5 py-2.5 rounded-xl font-bold shadow-sm shadow-blue-500/20">Band qilish</a>
-                    </div>
+                    <a href="teacher.html" class="interactive bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] px-4 py-2 rounded-xl font-bold shadow-sm shadow-indigo-500/20">Band qilish</a>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+
+    <!-- Mashhur kurslar -->
+    <div class="mt-5">
+        <div class="px-4 flex justify-between items-center mb-2.5">
+            <h3 class="text-xs font-bold text-gray-900">Mashhur kurslar</h3>
+            <a href="#" class="text-[11px] font-bold text-indigo-600">Barchasini ko'rish &gt;</a>
+        </div>
+        <div class="flex gap-3 px-4 overflow-x-auto no-scrollbar">
+            <div class="flex-shrink-0 w-[140px] bg-white p-3 rounded-2xl border border-slate-100 shadow-sm">
+                <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center font-bold text-xs mb-2">IELTS</div>
+                <h4 class="text-[11px] font-bold text-gray-900 leading-snug">IELTS 7+ Band</h4>
+                <p class="text-[10px] text-gray-400 mt-1">128 ta dars</p>
+            </div>
+            <div class="flex-shrink-0 w-[140px] bg-white p-3 rounded-2xl border border-slate-100 shadow-sm">
+                <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xs mb-2">A</div>
+                <h4 class="text-[11px] font-bold text-gray-900 leading-snug">Ingliz tili Umumiy kurs</h4>
+                <p class="text-[10px] text-gray-400 mt-1">96 ta dars</p>
+            </div>
+            <div class="flex-shrink-0 w-[140px] bg-white p-3 rounded-2xl border border-slate-100 shadow-sm">
+                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs mb-2">√x</div>
+                <h4 class="text-[11px] font-bold text-gray-900 leading-snug">Matematika 0 dan boshlab</h4>
+                <p class="text-[10px] text-gray-400 mt-1">64 ta dars</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Platforma statistikasi -->
+    <div class="px-4 mt-5">
+        <div class="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm grid grid-cols-2 gap-4 text-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg">👥</div>
+                <div class="text-left">
+                    <h4 class="text-xs font-bold text-gray-900">1,200+</h4>
+                    <p class="text-[10px] text-gray-400">Ustozlar</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg">🎓</div>
+                <div class="text-left">
+                    <h4 class="text-xs font-bold text-gray-900">30,000+</h4>
+                    <p class="text-[10px] text-gray-400">O'quvchilar</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg">⭐</div>
+                <div class="text-left">
+                    <h4 class="text-xs font-bold text-gray-900">4.9</h4>
+                    <p class="text-[10px] text-gray-400">O'rtacha reyting</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">📈</div>
+                <div class="text-left">
+                    <h4 class="text-xs font-bold text-gray-900">98%</h4>
+                    <p class="text-[10px] text-gray-400">Mamnun o'quvchilar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- O'quvchilar fikrlari -->
+    <div class="mt-5">
+        <div class="px-4 flex justify-between items-center mb-2.5">
+            <h3 class="text-xs font-bold text-gray-900">O'quvchilar fikrlari</h3>
+            <a href="#" class="text-[11px] font-bold text-indigo-600">Barchasini ko'rish &gt;</a>
+        </div>
+        <div class="flex gap-3 px-4 overflow-x-auto no-scrollbar">
+            <div class="flex-shrink-0 w-[240px] bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm">
+                <div class="flex items-center gap-2 mb-2">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" class="w-8 h-8 rounded-full object-cover">
+                    <div>
+                        <h4 class="text-[11px] font-bold text-gray-900">Sevinch Y.</h4>
+                        <p class="text-[9px] text-amber-500">★★★★★</p>
+                    </div>
+                </div>
+                <p class="text-[10px] text-gray-600 leading-relaxed">EduPrime orqali IELTSdan 7.5 oldim! Platforma juda qulay va ustozlar a'lo.</p>
+            </div>
+            <div class="flex-shrink-0 w-[240px] bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm">
+                <div class="flex items-center gap-2 mb-2">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" class="w-8 h-8 rounded-full object-cover">
+                    <div>
+                        <h4 class="text-[11px] font-bold text-gray-900">Abdulloh K.</h4>
+                        <p class="text-[9px] text-amber-500">★★★★★</p>
+                    </div>
+                </div>
+                <p class="text-[10px] text-gray-600 leading-relaxed">Matematika darslari tushunarli va interaktiv. Juda tavsiya qilaman!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pastdagi Banner (Ustozmisiz?) -->
+    <div class="px-4 mt-5">
+        <div class="bg-gradient-to-r from-indigo-700 to-purple-800 p-4 rounded-3xl text-white shadow-lg relative overflow-hidden flex justify-between items-center">
+            <div class="relative z-10 max-w-[60%]">
+                <h4 class="font-bold text-xs">Ustozmisiz?</h4>
+                <p class="text-[10px] opacity-90 mt-1 leading-relaxed">Bilimingizni boshqalar bilan baham ko'ring va daromad qiling!</p>
+                <button class="mt-3 bg-white text-indigo-900 text-[11px] font-bold px-3.5 py-1.5 rounded-xl shadow">Ustoz bo'lish</button>
+            </div>
+            <div class="relative z-10 text-4xl">👨‍🏫</div>
+        </div>
+    </div>
+
+    <!-- Floating AI Bot Button -->
+    <div class="fixed right-4 bottom-20 z-50">
+        <button class="w-12 h-12 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-lg flex items-center justify-center text-xl interactive">
+            🤖
+        </button>
+    </div>
 
     <!-- Professional Pastki Navigatsiya (Bottom Menu) -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-gray-100 px-6 py-3 flex justify-around items-center z-50 shadow-lg">
-        <a href="index.html" class="interactive flex flex-col items-center text-blue-600 group">
-            <div class="w-10 h-10 rounded-2xl bg-blue-50 flex items-center justify-center text-lg transition-all group-hover:scale-110">🏠</div>
-            <span class="text-[10px] font-bold mt-1">Asosiy</span>
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 px-4 py-2.5 flex justify-around items-center z-50 shadow-lg">
+        <a href="index.html" class="interactive flex flex-col items-center text-indigo-600">
+            <span class="text-base">🏠</span>
+            <span class="text-[10px] font-bold mt-0.5">Asosiy</span>
         </a>
-        <a href="cabinet.html" onclick="hapticClick()" class="interactive flex flex-col items-center text-gray-400 hover:text-gray-600 group">
-            <div class="w-10 h-10 rounded-2xl bg-transparent flex items-center justify-center text-lg transition-all group-hover:bg-gray-100 group-hover:scale-110">👤</div>
-            <span class="text-[10px] font-medium mt-1">Kabinet</span>
+        <a href="#" class="interactive flex flex-col items-center text-gray-400 hover:text-gray-600">
+            <span class="text-base">🔍</span>
+            <span class="text-[10px] font-medium mt-0.5">Qidiruv</span>
+        </a>
+        <a href="#" class="interactive flex flex-col items-center text-gray-400 hover:text-gray-600">
+            <span class="text-base">📅</span>
+            <span class="text-[10px] font-medium mt-0.5">Darslarim</span>
+        </a>
+        <a href="chat.html" class="interactive flex flex-col items-center text-gray-400 hover:text-gray-600">
+            <span class="text-base">💬</span>
+            <span class="text-[10px] font-medium mt-0.5">Xabarlar</span>
+        </a>
+        <a href="cabinet.html" class="interactive flex flex-col items-center text-gray-400 hover:text-gray-600">
+            <span class="text-base">👤</span>
+            <span class="text-[10px] font-medium mt-0.5">Profil</span>
         </a>
     </nav>
 
@@ -191,66 +417,12 @@
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
             const firstName = tg.initDataUnsafe.user.first_name;
             document.getElementById('username').innerText = firstName;
-            document.getElementById('user-avatar-icon').innerText = firstName.charAt(0).toUpperCase();
         }
 
         function hapticClick() {
             if (tg.HapticFeedback) {
                 tg.HapticFeedback.impactOccurred('medium');
             }
-        }
-
-        // Qidirish funksiyasi
-        function searchTeachers() {
-            const query = document.getElementById('search-input').value.toLowerCase();
-            const cards = document.querySelectorAll('.teacher-card');
-            cards.forEach(card => {
-                const name = card.getAttribute('data-name');
-                if (name.includes(query)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Kategoriya filtri
-        function filterCategory(btn, category) {
-            if (tg.HapticFeedback) tg.HapticFeedback.selectionChanged();
-            
-            document.querySelectorAll('.cat-btn').forEach(b => {
-                b.className = "cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100";
-            });
-            btn.className = "cat-btn interactive bg-blue-600 text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow-sm shadow-blue-500/20";
-
-            const cards = document.querySelectorAll('.teacher-card');
-            cards.forEach(card => {
-                const cats = card.getAttribute('data-category');
-                if (category === 'all' || cats.includes(category)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Saralash funksiyasi
-        function sortTeachers(criteria) {
-            if (tg.HapticFeedback) tg.HapticFeedback.selectionChanged();
-            const list = document.getElementById('teachers-list');
-            const cards = Array.from(list.querySelectorAll('.teacher-card'));
-
-            cards.sort((a, b) => {
-                if (criteria === 'rating') {
-                    return parseFloat(b.getAttribute('data-rating')) - parseFloat(a.getAttribute('data-rating'));
-                } else if (criteria === 'price-low') {
-                    return parseInt(a.getAttribute('data-price')) - parseInt(b.getAttribute('data-price'));
-                } else if (criteria === 'price-high') {
-                    return parseInt(b.getAttribute('data-price')) - parseInt(a.getAttribute('data-price'));
-                }
-            });
-
-            cards.forEach(card => list.appendChild(card));
         }
     </script>
 </body>
