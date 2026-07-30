@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italki TWA - Shaxsiy Kabinet</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: var(--tg-theme-bg-color, #F8FAFC);
+            color: var(--tg-theme-text-color, #0F172A);
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-20">
+
+    <!-- Header -->
+    <header class="p-4 bg-white shadow-sm text-center">
+        <h1 class="font-bold text-base">Shaxsiy Kabinet</h1>
+    </header>
+
+    <main class="p-4 space-y-4">
+        <!-- Profil va Balans Karta -->
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-5 text-white shadow-md">
+            <p class="text-xs opacity-80">Joriy balans</p>
+            <h2 class="text-2xl font-bold mt-1">120,000 so'm</h2>
+            <button onclick="topUpBalance()" class="mt-4 bg-white text-blue-600 text-xs font-semibold px-4 py-2 rounded-xl shadow-sm hover:bg-blue-50 transition">
+                + Balansni to'ldirish
+            </button>
+        </div>
+
+        <!-- Kelgusi darslar bo'limi -->
+        <div>
+            <h3 class="font-bold text-sm mb-2 text-gray-700">Mening darslarim</h3>
+            <div class="bg-white p-4 rounded-2xl shadow-sm flex justify-between items-center">
+                <div>
+                    <span class="text-xs bg-blue-50 text-blue-600 px-2 py-0.5 rounded-md font-medium">Ingliz tili</span>
+                    <h4 class="font-bold text-sm mt-1">Ustoz: Madina Karimova</h4>
+                    <p class="text-xs text-gray-400 mt-0.5">📅 Ertaga, 16:00</p>
+                </div>
+                <button onclick="joinLesson()" class="bg-emerald-500 hover:bg-emerald-600 text-white text-xs px-3 py-2 rounded-xl font-medium transition">
+                    Kirish 🎥
+                </button>
+            </div>
+        </div>
+
+        <!-- Sozlamalar menyusi -->
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+            <a href="#" class="flex justify-between items-center p-4 border-b border-gray-100 text-sm">
+                <span>🌐 Tilni o'zgartirish (O'zbekcha)</span>
+                <span class="text-gray-400">›</span>
+            </a>
+            <a href="#" class="flex justify-between items-center p-4 text-sm text-red-500">
+                <span>🚪 Chiqish</span>
+            </a>
+        </div>
+    </main>
+
+    <!-- Pastki Navigatsiya (Bottom Menu) -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 flex justify-around py-2.5 z-50">
+        <a href="index.html" class="flex flex-col items-center text-gray-400 text-xs">
+            <span class="text-lg">🏠</span>
+            <span class="mt-0.5">Asosiy</span>
+        </a>
+        <a href="cabinet.html" class="flex flex-col items-center text-blue-600 text-xs">
+            <span class="text-lg">👤</span>
+            <span class="font-medium mt-0.5">Kabinet</span>
+        </a>
+    </nav>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
+        function topUpBalance() {
+            alert("Click / Payme orqali balansni to'ldirish oynasi ochiladi.");
+        }
+
+        function joinLesson() {
+            alert("Video dars xonasiga ulanilmoqda...");
+        }
+    </script>
+</body>
+</html>
