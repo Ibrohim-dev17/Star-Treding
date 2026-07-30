@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italki TWA - Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: var(--tg-theme-bg-color, #F4F6F9);
+            color: var(--tg-theme-text-color, #0F172A);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .interactive { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+        .interactive:active { transform: scale(0.96); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- Chat Header -->
+    <header class="p-3 bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 flex items-center gap-3">
+        <a href="cabinet.html" class="interactive w-8 h-8 rounded-xl bg-gray-100 flex items-center justify-center text-gray-700 font-bold text-sm">‹</a>
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="Teacher" class="w-10 h-10 rounded-full object-cover">
+        <div>
+            <h2 class="font-bold text-xs text-gray-900">Madina Karimova</h2>
+            <p class="text-[10px] text-emerald-600 font-semibold">Online</p>
+        </div>
+    </header>
+
+    <!-- Xabarlar maydoni -->
+    <main class="flex-1 p-4 space-y-3 overflow-y-auto">
+        <!-- Qabul qilingan xabar -->
+        <div class="flex items-end gap-2">
+            <div class="bg-white p-3 rounded-2xl rounded-bl-sm shadow-sm max-w-[75%] border border-gray-100">
+                <p class="text-xs text-gray-800">Assalomu alaykum! Ertangi darsimizga tayyormisiz?</p>
+                <span class="text-[9px] text-gray-400 block text-right mt-1">10:14</span>
+            </div>
+        </div>
+
+        <!-- Yuborilgan xabar -->
+        <div class="flex items-end justify-end gap-2">
+            <div class="bg-blue-600 text-white p-3 rounded-2xl rounded-br-sm shadow-sm max-w-[75%]">
+                <p class="text-xs">Va alaykum assalom! Ha, albatta, uy vazifasini bajarib qo'ydim.</p>
+                <span class="text-[9px] text-blue-200 block text-right mt-1">10:15</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Xabar yozish paneli -->
+    <footer class="p-3 bg-white/90 backdrop-blur-md border-t border-gray-100 sticky bottom-0 flex items-center gap-2">
+        <input type="text" id="message-input" placeholder="Xabar yozing..." 
+            class="flex-1 bg-gray-100 border-none rounded-2xl px-4 py-3 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/50">
+        <button onclick="sendMessage()" class="interactive bg-blue-600 hover:bg-blue-700 text-white w-11 h-11 rounded-2xl flex items-center justify-center shadow-md shadow-blue-500/20">
+            ➤
+        </button>
+    </footer>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            if (input.value.trim() !== "") {
+                if (tg.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
+                alert("Xabar yuborildi: " + input.value);
+                input.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
