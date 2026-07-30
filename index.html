@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Italki TWA - Asosiy Sahifa</title>
+    <title>Italki TWA - Mukammal Asosiy Sahifa</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Telegram Web App SDK -->
@@ -14,14 +14,12 @@
             color: var(--tg-theme-text-color, #0F172A);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-        /* Smooth transition for interactive elements */
         .interactive {
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .interactive:active {
-            transform: scale(0.96);
+            transform: scale(0.97);
         }
-        /* Hide scrollbar for clean look */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -34,44 +32,44 @@
 <body class="min-h-screen pb-28">
 
     <!-- Header / Yuqori qism -->
-    <header class="p-4 bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <header class="p-4 bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <div class="flex justify-between items-center mb-3">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-base shadow-inner" id="user-avatar-icon">A</div>
+                <div class="w-10 h-10 rounded-2xl bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm shadow-inner" id="user-avatar-icon">A</div>
                 <div>
-                    <p class="text-[11px] text-gray-400 font-medium">Xush kelibsiz 👋</p>
-                    <h1 id="username" class="text-sm font-bold tracking-tight">Alisher</h1>
+                    <p class="text-[10px] text-gray-400 font-medium">Xush kelibsiz 👋</p>
+                    <h1 id="username" class="text-xs font-bold tracking-tight text-gray-900">Alisher</h1>
                 </div>
             </div>
-            <a href="cabinet.html" class="interactive flex items-center gap-1.5 bg-blue-50 text-blue-600 px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-sm hover:bg-blue-100">
-                <span class="text-sm">💎</span>
+            <a href="cabinet.html" onclick="hapticClick()" class="interactive flex items-center gap-1.5 bg-blue-50 text-blue-600 px-3.5 py-1.5 rounded-2xl text-xs font-bold shadow-sm hover:bg-blue-100">
+                <span>💎</span>
                 <span id="user-balance">120,000 so'm</span>
             </a>
         </div>
         <!-- Qidiruv paneli -->
         <div class="relative">
-            <input type="text" id="search-input" placeholder="Ustoz, fan yoki mavzuni qidiring..." 
-                class="w-full bg-gray-100 border-none rounded-2xl px-4 py-3 pl-10 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all">
+            <input type="text" id="search-input" oninput="searchTeachers()" placeholder="Ustoz, fan yoki mavzuni qidiring..." 
+                class="w-full bg-gray-100 border-none rounded-2xl px-4 py-3 pl-10 text-xs text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all">
             <span class="absolute left-3.5 top-3.5 text-gray-400 text-sm">🔍</span>
         </div>
     </header>
 
-    <!-- Yangiliklar / E'lonlar banneri (Stories style) -->
+    <!-- Yangiliklar / E'lonlar (Stories Banner) -->
     <div class="px-4 mt-4">
-        <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
-            <div class="flex-shrink-0 w-64 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-4 text-white shadow-md relative overflow-hidden">
+        <div class="flex gap-3 overflow-x-auto no-scrollbar pb-1">
+            <div class="flex-shrink-0 w-64 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-3xl p-4 text-white shadow-md relative overflow-hidden">
                 <div class="relative z-10">
-                    <span class="bg-white/20 text-[10px] px-2 py-0.5 rounded-md font-semibold">🔥 Aksiya</span>
-                    <h4 class="font-bold text-sm mt-2">1-dars 50% chegirma!</h4>
-                    <p class="text-[11px] opacity-90 mt-0.5">Istalgan ustoz bilan birinchi sinov darsini yarim narxda o'ting.</p>
+                    <span class="bg-white/20 text-[10px] px-2 py-0.5 rounded-lg font-bold">🔥 Aksiya</span>
+                    <h4 class="font-bold text-xs mt-2">1-dars 50% chegirma!</h4>
+                    <p class="text-[10px] opacity-90 mt-0.5">Istalgan ustoz bilan sinov darsini yarim narxda o'ting.</p>
                 </div>
                 <div class="absolute -right-4 -bottom-4 text-6xl opacity-15">🚀</div>
             </div>
-            <div class="flex-shrink-0 w-64 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl p-4 text-white shadow-md relative overflow-hidden">
+            <div class="flex-shrink-0 w-64 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-3xl p-4 text-white shadow-md relative overflow-hidden">
                 <div class="relative z-10">
-                    <span class="bg-white/20 text-[10px] px-2 py-0.5 rounded-md font-semibold">💡 Yangilik</span>
-                    <h4 class="font-bold text-sm mt-2">So'zlashuv klubi</h4>
-                    <p class="text-[11px] opacity-90 mt-0.5">Har shanba kuni chet ellik ustozlar bilan bepul muloqot qiling.</p>
+                    <span class="bg-white/20 text-[10px] px-2 py-0.5 rounded-lg font-bold">💡 Bepul</span>
+                    <h4 class="font-bold text-xs mt-2">So'zlashuv klubi</h4>
+                    <p class="text-[10px] opacity-90 mt-0.5">Har shanba chet ellik ustozlar bilan muloqot qiling.</p>
                 </div>
                 <div class="absolute -right-4 -bottom-4 text-6xl opacity-15">🌍</div>
             </div>
@@ -80,17 +78,17 @@
 
     <!-- Kategoriyalar filtri -->
     <div class="flex gap-2 px-4 mt-3 overflow-x-auto no-scrollbar">
-        <button onclick="filterCategory(this, 'all')" class="cat-btn interactive bg-blue-600 text-white px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm shadow-blue-500/20">Barchasi</button>
-        <button onclick="filterCategory(this, 'english')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm">Ingliz tili</button>
-        <button onclick="filterCategory(this, 'ielts')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm">IELTS 7+</button>
-        <button onclick="filterCategory(this, 'russian')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm">Rus tili</button>
-        <button onclick="filterCategory(this, 'it')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm">IT & Dasturlash</button>
+        <button onclick="filterCategory(this, 'all')" class="cat-btn interactive bg-blue-600 text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow-sm shadow-blue-500/20">Barchasi</button>
+        <button onclick="filterCategory(this, 'english')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100">Ingliz tili</button>
+        <button onclick="filterCategory(this, 'ielts')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100">IELTS 7+</button>
+        <button onclick="filterCategory(this, 'russian')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100">Rus tili</button>
+        <button onclick="filterCategory(this, 'it')" class="cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100">IT & Ingliz</button>
     </div>
 
     <!-- O'qituvchilar ro'yxati -->
     <main class="px-4 mt-4 space-y-3" id="teachers-list">
         <!-- Kartochka 1 -->
-        <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100/80 flex gap-3.5 items-center hover:shadow-md transition-all">
+        <div class="teacher-card bg-white p-4 rounded-3xl shadow-sm border border-gray-100 flex gap-3.5 items-center hover:shadow-md transition-all" data-category="ielts english" data-name="madina karimova">
             <div class="relative">
                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" alt="Teacher" class="w-16 h-16 rounded-2xl object-cover shadow-sm">
                 <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white"></span>
@@ -98,7 +96,7 @@
             <div class="flex-1">
                 <div class="flex justify-between items-start">
                     <h3 class="font-bold text-xs text-gray-900">Madina Karimova</h3>
-                    <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md flex items-center gap-0.5">⭐ 4.9 <span class="text-gray-400 font-normal">(84)</span></span>
+                    <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-lg flex items-center gap-0.5">⭐ 4.9 <span class="text-gray-400 font-normal">(84)</span></span>
                 </div>
                 <p class="text-[11px] text-gray-500 mt-0.5 font-medium">IELTS 8.5 / Native Speaker</p>
                 <div class="flex justify-between items-center mt-3">
@@ -106,13 +104,16 @@
                         <span class="text-xs font-bold text-blue-600">80,000 so'm</span>
                         <span class="text-[10px] text-gray-400">/soat</span>
                     </div>
-                    <button onclick="bookLesson('Madina Karimova')" class="interactive bg-blue-600 hover:bg-blue-700 text-white text-[11px] px-3.5 py-2 rounded-xl font-semibold shadow-sm shadow-blue-500/20">Band qilish</button>
+                    <div class="flex gap-1.5">
+                        <a href="chat.html" onclick="hapticClick()" class="interactive bg-gray-100 hover:bg-gray-200 text-gray-700 text-[11px] p-2 rounded-xl font-bold">💬</a>
+                        <a href="teacher.html" onclick="hapticClick()" class="interactive bg-blue-600 hover:bg-blue-700 text-white text-[11px] px-3.5 py-2 rounded-xl font-bold shadow-sm shadow-blue-500/20">Band qilish</a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Kartochka 2 -->
-        <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100/80 flex gap-3.5 items-center hover:shadow-md transition-all">
+        <div class="teacher-card bg-white p-4 rounded-3xl shadow-sm border border-gray-100 flex gap-3.5 items-center hover:shadow-md transition-all" data-category="english" data-name="jasur rahimov">
             <div class="relative">
                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" alt="Teacher" class="w-16 h-16 rounded-2xl object-cover shadow-sm">
                 <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white"></span>
@@ -120,7 +121,7 @@
             <div class="flex-1">
                 <div class="flex justify-between items-start">
                     <h3 class="font-bold text-xs text-gray-900">Jasur Rahimov</h3>
-                    <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md flex items-center gap-0.5">⭐ 4.8 <span class="text-gray-400 font-normal">(52)</span></span>
+                    <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-lg flex items-center gap-0.5">⭐ 4.8 <span class="text-gray-400 font-normal">(52)</span></span>
                 </div>
                 <p class="text-[11px] text-gray-500 mt-0.5 font-medium">General English & Grammar</p>
                 <div class="flex justify-between items-center mt-3">
@@ -128,7 +129,10 @@
                         <span class="text-xs font-bold text-blue-600">60,000 so'm</span>
                         <span class="text-[10px] text-gray-400">/soat</span>
                     </div>
-                    <button onclick="bookLesson('Jasur Rahimov')" class="interactive bg-blue-600 hover:bg-blue-700 text-white text-[11px] px-3.5 py-2 rounded-xl font-semibold shadow-sm shadow-blue-500/20">Band qilish</button>
+                    <div class="flex gap-1.5">
+                        <a href="chat.html" onclick="hapticClick()" class="interactive bg-gray-100 hover:bg-gray-200 text-gray-700 text-[11px] p-2 rounded-xl font-bold">💬</a>
+                        <a href="teacher.html" onclick="hapticClick()" class="interactive bg-blue-600 hover:bg-blue-700 text-white text-[11px] px-3.5 py-2 rounded-xl font-bold shadow-sm shadow-blue-500/20">Band qilish</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -140,7 +144,7 @@
             <div class="w-10 h-10 rounded-2xl bg-blue-50 flex items-center justify-center text-lg transition-all group-hover:scale-110">🏠</div>
             <span class="text-[10px] font-bold mt-1">Asosiy</span>
         </a>
-        <a href="cabinet.html" class="interactive flex flex-col items-center text-gray-400 hover:text-gray-600 group">
+        <a href="cabinet.html" onclick="hapticClick()" class="interactive flex flex-col items-center text-gray-400 hover:text-gray-600 group">
             <div class="w-10 h-10 rounded-2xl bg-transparent flex items-center justify-center text-lg transition-all group-hover:bg-gray-100 group-hover:scale-110">👤</div>
             <span class="text-[10px] font-medium mt-1">Kabinet</span>
         </a>
@@ -156,21 +160,44 @@
             document.getElementById('user-avatar-icon').innerText = firstName.charAt(0).toUpperCase();
         }
 
-        function bookLesson(teacherName) {
+        function hapticClick() {
             if (tg.HapticFeedback) {
                 tg.HapticFeedback.impactOccurred('medium');
             }
-            alert(`${teacherName} bilan darsni bron qilish oynasiga o'tish...`);
         }
 
-        function filterCategory(btn, category) {
-            if (tg.HapticFeedback) {
-                tg.HapticFeedback.selectionChanged();
-            }
-            document.querySelectorAll('.cat-btn').forEach(b => {
-                b.className = "cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm";
+        // Qidirish funksiyasi
+        function searchTeachers() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const cards = document.querySelectorAll('.teacher-card');
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name');
+                if (name.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
             });
-            btn.className = "cat-btn interactive bg-blue-600 text-white px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm shadow-blue-500/20";
+        }
+
+        // Kategoriya filtri
+        function filterCategory(btn, category) {
+            if (tg.HapticFeedback) tg.HapticFeedback.selectionChanged();
+            
+            document.querySelectorAll('.cat-btn').forEach(b => {
+                b.className = "cat-btn interactive bg-white text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shadow-sm border border-gray-100";
+            });
+            btn.className = "cat-btn interactive bg-blue-600 text-white px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow-sm shadow-blue-500/20";
+
+            const cards = document.querySelectorAll('.teacher-card');
+            cards.forEach(card => {
+                const cats = card.getAttribute('data-category');
+                if (category === 'all' || cats.includes(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
     </script>
 </body>
