@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italki TWA - O'qituvchi Profili</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: var(--tg-theme-bg-color, #F4F6F9);
+            color: var(--tg-theme-text-color, #0F172A);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .interactive { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+        .interactive:active { transform: scale(0.96); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen pb-32">
+
+    <!-- Header / Orqaga qaytish -->
+    <header class="p-4 bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 flex items-center justify-between">
+        <a href="index.html" class="interactive w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center text-gray-700 font-bold text-sm">‹</a>
+        <h1 class="font-bold text-sm">Ustoz Profili</h1>
+        <div class="w-9"></div>
+    </header>
+
+    <main class="p-4 space-y-4">
+        <!-- Ustoz Asosiy Ma'lumotlari -->
+        <div class="bg-white p-5 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
+            <div class="relative mb-3">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200" alt="Teacher" class="w-24 h-24 rounded-3xl object-cover shadow-md">
+                <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-5 h-5 rounded-full border-2 border-white"></span>
+            </div>
+            <h2 class="font-bold text-base text-gray-900">Madina Karimova</h2>
+            <p class="text-xs text-blue-600 font-semibold mt-0.5">IELTS 8.5 / Native Speaker</p>
+            <div class="flex items-center gap-2 mt-2">
+                <span class="text-[11px] font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-lg">⭐ 4.9 (84 sharh)</span>
+                <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg">✅ 1,200+ dars</span>
+            </div>
+        </div>
+
+        <!-- Tanishtiruv Videoroligi (Mock Video Player) -->
+        <div class="bg-gray-900 rounded-3xl overflow-hidden shadow-md relative h-48 flex items-center justify-center text-white">
+            <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400')"></div>
+            <button onclick="playVideo()" class="interactive relative z-10 w-14 h-14 rounded-full bg-blue-600/90 backdrop-blur-md flex items-center justify-center text-xl shadow-lg hover:scale-110">
+                ▶
+            </button>
+            <span class="absolute bottom-3 left-4 text-[11px] font-medium bg-black/40 px-2.5 py-1 rounded-lg backdrop-blur-sm z-10">Tanishtiruv videosi (1 min)</span>
+        </div>
+
+        <!-- Bio / Haqida -->
+        <div class="bg-white p-4 rounded-3xl shadow-sm border border-gray-100">
+            <h3 class="font-bold text-xs text-gray-800 uppercase tracking-wider mb-2">Ustoz haqida</h3>
+            <p class="text-xs text-gray-600 leading-relaxed">
+                Salom! Men Madina. 6 yildan ortiq tajribaga ega sertifikatlangan IELTS va Ingliz tili o'qituvchisiman. Darslarim faqat amaliyot, jonli muloqot va real imtihon savollari asosida qiziqarli o'tadi.
+            </p>
+        </div>
+
+        <!-- Interaktiv Kalendar va Bo'sh vaqtlar -->
+        <div class="bg-white p-4 rounded-3xl shadow-sm border border-gray-100">
+            <h3 class="font-bold text-xs text-gray-800 uppercase tracking-wider mb-3">Bo'sh vaqtni tanlang</h3>
+            
+            <!-- Kunlar tanlovi -->
+            <div class="flex gap-2 overflow-x-auto no-scrollbar pb-2 mb-3">
+                <button onclick="selectDay(this)" class="day-btn interactive bg-blue-600 text-white px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow-sm">31-Iyul, Pv</button>
+                <button onclick="selectDay(this)" class="day-btn interactive bg-gray-100 text-gray-600 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap">1-Avgust, Jm</button>
+                <button onclick="selectDay(this)" class="day-btn interactive bg-gray-100 text-gray-600 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap">2-Avgust, Sh</button>
+            </div>
+
+            <!-- Vaqt slotlari -->
+            <div class="grid grid-cols-3 gap-2">
+                <button onclick="selectTime(this)" class="time-btn interactive bg-gray-50 border border-gray-200 text-gray-700 py-2.5 rounded-xl text-xs font-semibold hover:border-blue-500">14:00</button>
+                <button onclick="selectTime(this)" class="time-btn interactive bg-gray-50 border border-gray-200 text-gray-700 py-2.5 rounded-xl text-xs font-semibold hover:border-blue-500">16:00</button>
+                <button onclick="selectTime(this)" class="time-btn interactive bg-gray-50 border border-gray-200 text-gray-700 py-2.5 rounded-xl text-xs font-semibold hover:border-blue-500">18:00</button>
+            </div>
+        </div>
+
+        <!-- O'quvchilar Sharhlari (Reviews) -->
+        <div class="bg-white p-4 rounded-3xl shadow-sm border border-gray-100 space-y-3">
+            <h3 class="font-bold text-xs text-gray-800 uppercase tracking-wider">O'quvchilar fikri</h3>
+            <div class="border-b border-gray-100 pb-3">
+                <div class="flex justify-between items-center">
+                    <span class="font-bold text-xs text-gray-900">Jasurbek T.</span>
+                    <span class="text-[10px] text-amber-700 font-bold">⭐ 5.0</span>
+                </div>
+                <p class="text-[11px] text-gray-500 mt-1">Dars juda ajoyib o'tdi, xatolarimni tushuntirib berdi. Tavsiya qilaman!</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pastki Band Qilish Paneli (Sticky Footer) -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-gray-100 p-4 flex justify-between items-center z-50 shadow-lg">
+        <div>
+            <p class="text-[10px] text-gray-400 font-medium">1 soatlik dars narxi</p>
+            <h3 class="text-base font-bold text-blue-600">80,000 so'm</h3>
+        </div>
+        <button onclick="confirmBooking()" class="interactive bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-6 py-3 rounded-2xl shadow-md shadow-blue-500/20">
+            Darsni Band Qilish 🚀
+        </button>
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
+        function playVideo() { alert("Ustoz tanishtiruv videosi ochilmoqda..."); }
+        function selectDay(btn) {
+            document.querySelectorAll('.day-btn').forEach(b => b.className = "day-btn interactive bg-gray-100 text-gray-600 px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap");
+            btn.className = "day-btn interactive bg-blue-600 text-white px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap shadow-sm";
+        }
+        function selectTime(btn) {
+            document.querySelectorAll('.time-btn').forEach(b => b.className = "time-btn interactive bg-gray-50 border border-gray-200 text-gray-700 py-2.5 rounded-xl text-xs font-semibold hover:border-blue-500");
+            btn.className = "time-btn interactive bg-blue-50 border-2 border-blue-600 text-blue-600 py-2.5 rounded-xl text-xs font-bold";
+        }
+        function confirmBooking() {
+            if (tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
+            alert("Muvaffaqiyatli band qilindi! Dars jadvalingizga qo'shildi.");
+        }
+    </script>
+</body>
+</html>
