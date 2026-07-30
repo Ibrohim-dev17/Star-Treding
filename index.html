@@ -67,7 +67,7 @@
         </a>
     </div>
 
-    <!-- Qidiruv paneli (Mikrofonsiz) -->
+    <!-- Qidiruv paneli -->
     <div class="px-4 mt-3">
         <div class="relative flex items-center">
             <input type="text" id="search-input" placeholder="Ustoz, fan yoki mavzu qidiring..." 
@@ -191,7 +191,7 @@
         </div>
     </div>
 
-    <!-- EduPrime tavsiya qiladi (Kengaytirilgan) -->
+    <!-- EduPrime tavsiya qiladi -->
     <div class="mt-5">
         <div class="px-4 flex justify-between items-center mb-2.5">
             <h3 class="text-xs font-bold text-gray-900">EduPrime tavsiya qiladi</h3>
@@ -249,64 +249,104 @@
         </div>
     </div>
 
-    <!-- Top ustozlar (Ko'paytirilgan) -->
-    <div class="mt-5 px-4">
-        <div class="flex justify-between items-center mb-3">
+    <!-- Top ustozlar (Endi yon tomonga suriladigan horizontal scroll va ko'paytirilgan) -->
+    <div class="mt-5">
+        <div class="px-4 flex justify-between items-center mb-2.5">
             <h3 class="text-xs font-bold text-gray-900">Top ustozlar</h3>
             <a href="#" class="text-[11px] font-bold text-indigo-600">Barchasini ko'rish &gt;</a>
         </div>
-        <div class="space-y-3">
-            <div class="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
-                <div class="flex items-center gap-3.5">
+        <div class="flex gap-3 px-4 overflow-x-auto no-scrollbar">
+            <!-- Ustoz 1 -->
+            <div class="flex-shrink-0 w-[240px] bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
+                <div class="flex items-center gap-3">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-16 h-16 rounded-2xl object-cover shadow-sm">
-                        <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white"></span>
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150" class="w-14 h-14 rounded-2xl object-cover shadow-sm">
+                        <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-3.5 h-3.5 rounded-full border-2 border-white"></span>
                     </div>
-                    <div class="flex-1">
-                        <div class="flex justify-between items-start">
-                            <h3 class="font-bold text-xs text-gray-900">Madina Karimova</h3>
-                            <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-lg">4.9 <span class="text-gray-400 font-normal">(84)</span></span>
-                        </div>
-                        <p class="text-[11px] text-gray-500 mt-0.5">IELTS 8.5 / Native Speaker</p>
-                        <p class="text-[10px] text-gray-400 mt-0.5">5 yil tajriba • 523 o'quvchi</p>
+                    <div>
+                        <h3 class="font-bold text-xs text-gray-900">Madina Karimova</h3>
+                        <p class="text-[10px] text-gray-500 mt-0.5">IELTS 8.5</p>
+                        <span class="inline-block mt-1 text-[9px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded-md">4.9 (84)</span>
                     </div>
                 </div>
-                <div class="mt-3 pt-3 border-t border-slate-100 flex justify-between items-center">
+                <div class="mt-3 pt-2.5 border-t border-slate-100 flex justify-between items-center">
                     <div>
                         <span class="text-xs font-bold text-indigo-600">80,000 so'm</span>
-                        <span class="text-[10px] text-gray-400">/soat</span>
+                        <span class="text-[9px] text-gray-400">/soat</span>
                     </div>
-                    <a href="teacher.html" class="interactive bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] px-4 py-2 rounded-xl font-bold shadow-sm shadow-indigo-500/20">Band qilish</a>
+                    <a href="teacher.html" class="interactive bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] px-3 py-1.5 rounded-xl font-bold shadow-sm">Band qilish</a>
                 </div>
             </div>
 
-            <div class="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
-                <div class="flex items-center gap-3.5">
+            <!-- Ustoz 2 -->
+            <div class="flex-shrink-0 w-[240px] bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
+                <div class="flex items-center gap-3">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" class="w-16 h-16 rounded-2xl object-cover shadow-sm">
-                        <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-4 h-4 rounded-full border-2 border-white"></span>
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" class="w-14 h-14 rounded-2xl object-cover shadow-sm">
+                        <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-3.5 h-3.5 rounded-full border-2 border-white"></span>
                     </div>
-                    <div class="flex-1">
-                        <div class="flex justify-between items-start">
-                            <h3 class="font-bold text-xs text-gray-900">Jasur Rahimov</h3>
-                            <span class="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-lg">4.8 <span class="text-gray-400 font-normal">(52)</span></span>
-                        </div>
-                        <p class="text-[11px] text-gray-500 mt-0.5">Senior English Mentor</p>
-                        <p class="text-[10px] text-gray-400 mt-0.5">4 yil tajriba • 310 o'quvchi</p>
+                    <div>
+                        <h3 class="font-bold text-xs text-gray-900">Jasur Rahimov</h3>
+                        <p class="text-[10px] text-gray-500 mt-0.5">Senior Mentor</p>
+                        <span class="inline-block mt-1 text-[9px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded-md">4.8 (52)</span>
                     </div>
                 </div>
-                <div class="mt-3 pt-3 border-t border-slate-100 flex justify-between items-center">
+                <div class="mt-3 pt-2.5 border-t border-slate-100 flex justify-between items-center">
                     <div>
                         <span class="text-xs font-bold text-indigo-600">60,000 so'm</span>
-                        <span class="text-[10px] text-gray-400">/soat</span>
+                        <span class="text-[9px] text-gray-400">/soat</span>
                     </div>
-                    <a href="teacher.html" class="interactive bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] px-4 py-2 rounded-xl font-bold shadow-sm shadow-indigo-500/20">Band qilish</a>
+                    <a href="teacher.html" class="interactive bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] px-3 py-1.5 rounded-xl font-bold shadow-sm">Band qilish</a>
+                </div>
+            </div>
+
+            <!-- Ustoz 3 -->
+            <div class="flex-shrink-0 w-[240px] bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150" class="w-14 h-14 rounded-2xl object-cover shadow-sm">
+                        <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-3.5 h-3.5 rounded-full border-2 border-white"></span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xs text-gray-900">Malika Abduazizova</h3>
+                        <p class="text-[10px] text-gray-500 mt-0.5">IELTS Expert</p>
+                        <span class="inline-block mt-1 text-[9px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded-md">4.9 (96)</span>
+                    </div>
+                </div>
+                <div class="mt-3 pt-2.5 border-t border-slate-100 flex justify-between items-center">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600">90,000 so'm</span>
+                        <span class="text-[9px] text-gray-400">/soat</span>
+                    </div>
+                    <a href="teacher.html" class="interactive bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] px-3 py-1.5 rounded-xl font-bold shadow-sm">Band qilish</a>
+                </div>
+            </div>
+
+            <!-- Ustoz 4 -->
+            <div class="flex-shrink-0 w-[240px] bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150" class="w-14 h-14 rounded-2xl object-cover shadow-sm">
+                        <span class="absolute -bottom-1 -right-1 bg-emerald-500 w-3.5 h-3.5 rounded-full border-2 border-white"></span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xs text-gray-900">Azizbek Tursunov</h3>
+                        <p class="text-[10px] text-gray-500 mt-0.5">Matematika Ustasi</p>
+                        <span class="inline-block mt-1 text-[9px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded-md">4.7 (39)</span>
+                    </div>
+                </div>
+                <div class="mt-3 pt-2.5 border-t border-slate-100 flex justify-between items-center">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-600">70,000 so'm</span>
+                        <span class="text-[9px] text-gray-400">/soat</span>
+                    </div>
+                    <a href="teacher.html" class="interactive bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] px-3 py-1.5 rounded-xl font-bold shadow-sm">Band qilish</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Mashhur kurslar (Ko'paytirilgan) -->
+    <!-- Mashhur kurslar -->
     <div class="mt-5">
         <div class="px-4 flex justify-between items-center mb-2.5">
             <h3 class="text-xs font-bold text-gray-900">Mashhur kurslar</h3>
@@ -360,14 +400,14 @@
         </div>
     </div>
 
-    <!-- Floating AI Bot Button (Zamonaviy Robot SVG bilan) -->
+    <!-- Floating AI Bot Button -->
     <div class="fixed right-4 bottom-20 z-50">
         <button class="w-12 h-12 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full shadow-lg flex items-center justify-center interactive">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6m-6 3h6"></path></svg>
         </button>
     </div>
 
-    <!-- Professional Pastki Navigatsiya (Ustozlar va yangi zamonaviy SVG'lar bilan) -->
+    <!-- Professional Pastki Navigatsiya -->
     <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 px-4 py-2.5 flex justify-around items-center z-50 shadow-lg">
         <a href="index.html" class="interactive flex flex-col items-center text-indigo-600">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
