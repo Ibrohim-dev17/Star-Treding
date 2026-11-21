@@ -1,0 +1,9 @@
+{
+  "name": "shaxmat-telegram-mini-app",
+  "version": "1.0.0",
+  "description": "Telegram Mini App: online shaxmat (uz/en/ru), akkaunt, do'stlar, chat, reyting",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}
